@@ -1,0 +1,43 @@
+
+
+/* Style for the order table */
+.order-table {
+    margin: 0 auto; /* Center the table horizontally */
+    width: 80%; /* Adjust the width as needed */
+}
+
+.order-table h2{
+    padding: 20px;
+    text-align: center;
+}
+
+.order-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style for table headers */
+.order-table th {
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    font-weight: bold;
+}
+
+/* Style for table rows */
+.order-table td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Style for alternating row colors (optional) */
+.order-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover effect (optional) */
+.order-table tbody tr:hover {
+    background-color: #ddd;
+}

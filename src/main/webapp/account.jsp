@@ -28,9 +28,13 @@
                         <li><a href="account.jsp">Account</a></li>
                         <li><a href="orders.jsp">Orders</a></li>
                         <li><a href="admin.jsp">Admin</a></li>
+                        <li>
+                            <a href="cart.jsp">
+                                <img src="Style/Pictures/white_shopping_cart.png" width="30px" height="30px">
+                            </a>
+                        </li>
                     </ul>
                 </nav>
-                <img src="Style/Pictures/white_shopping_cart.png" width="30px" height="30px">
             </div>
         </div>
     </div>

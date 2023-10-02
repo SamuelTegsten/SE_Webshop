@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale-1.0">
-    <title>Admin | Webshop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | Webshop</title>
     <link rel="stylesheet" href="Style/style.css">
-    <link rel="stylesheet" href="Style/adminStyle.css">
+    <link rel="stylesheet" href="Style/cartStyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
 </head>
+
 <body>
 <div class="header2">
     <div class="container">
@@ -41,69 +42,56 @@
 </div>
 
 <div class="container">
-    <h2>Admin Panel</h2>
-
-    <!-- User Form -->
-    <div class="add-user">
-        <h3>User</h3>
-        <form>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Add</button>
-            <button type="submit">Remove</button>
-        </form>
-    </div>
-
-    <!-- Staff Member Form -->
-    <div class="add-staff">
-        <h3>Staff Member</h3>
-        <form>
-            <!-- Add staff member form fields go here -->
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Add</button>
-            <button type="submit">Remove</button>
-        </form>
-    </div>
-
-    <!-- Admin Form -->
-    <div class="add-admin">
-        <h3>Admin</h3>
-        <form>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Add</button>
-            <button type="submit">Remove</button>
-        </form>
-    </div>
-
-    <!-- User Table -->
-    <div class="user-table">
-        <h3>User Table</h3>
+    <div class="cart-table">
         <table>
             <thead>
             <tr>
-                <th>Permission</th>
-                <th>Username</th>
+                <th>Image</th>
+                <th>Item Name</th>
+                <th>Item Price</th>
+                <th>Item Category</th>
+                <th>Quantity</th>
             </tr>
             </thead>
             <tbody>
-            <!-- Add rows of users, staff, and admins here -->
+
             <tr>
-                <td>User</td>
-                <td>JohnDoe</td>
+                <td><img src="Style/Pictures/knife1.png" alt="Item Image" width="50px" height="50px"></td>
+                <td>Product 1</td>
+                <td>$10.00</td>
+                <td>Category A</td>
+                <td class="quantity">
+                    <button class="decrease">-</button>
+                    <input type="number" name="quantity" value="1" min="1">
+                    <button class="increase">+</button>
+                </td>
             </tr>
             <tr>
-                <td>Staff</td>
-                <td>JaneSmith</td>
+                <td><img src="Style/Pictures/tent1.png" alt="Item Image" width="50px" height="50px"></td>
+                <td>Product 2</td>
+                <td>$20.00</td>
+                <td>Category B</td>
+                <td class="quantity">
+                    <button class="decrease">-</button>
+                    <input type="number" name="quantity" value="1" min="1">
+                    <button class="increase">+</button>
+                </td>
             </tr>
-            <tr>
-                <td>Admin</td>
-                <td>Admin123</td>
-            </tr>
+
             </tbody>
         </table>
+
+        <div class="total-amount">
+            <label for="total">Total Amount:</label>
+            <input type="text" id="total" name="total" readonly>
+        </div>
+    </div>
+
+    <div class="cart-buttons">
+        <button class="purchase-button">Purchase</button>
+        <button class="login-button">Log In</button>
     </div>
 </div>
 </body>
 </html>
+

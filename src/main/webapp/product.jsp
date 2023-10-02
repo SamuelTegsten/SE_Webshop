@@ -43,7 +43,7 @@
     <h2 class="title">All Products</h2>
     <div class="row">
         <div class="col-4">
-            <img src="Style/Pictures/tent1.png">
+            <img src="Style/Pictures/tent1.png" width="250px" height="250px">
             <h4>Name</h4>
             <div class="stock">
                 <div class="stock-info">
@@ -55,7 +55,7 @@
                     <i class="fa fa-times-circle"></i>
                 </div>
             </div>
-            <p>pris:-</p>
+            <p>price:-</p>
             <div class="add-to-cart-container">
                 <form action="AddToCartServlet" method="post">
                     <select name="quantity" class="quantity-select">
@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class="col-4">
-            <img src="Style/Pictures/knife1.png">
+            <img src="Style/Pictures/knife1.png" width="250px" height="250px">
             <h4>Name</h4>
             <div class="stock">
                 <div class="stock-info">
@@ -82,7 +82,7 @@
                     <i class="fa fa-times-circle"></i>
                 </div>
             </div>
-            <p>pris:-</p>
+            <p>price:-</p>
             <div class="add-to-cart-container">
                     <select name="quantity" class="quantity-select">
                         <option <% for (int i = 1; i <= 99; i++) { %>
@@ -94,7 +94,7 @@
             </div>
         </div>
         <div class="col-4">
-            <img src="Style/Pictures/binoculars1.png">
+            <img src="Style/Pictures/binoculars1.png" width="250px" height="250px">
             <h4>Name</h4>
             <div class="stock">
                 <div class="stock-info">
@@ -106,7 +106,7 @@
                     <i class="fa fa-times-circle"></i>
                 </div>
             </div>
-            <p>pris:-</p>
+            <p>price:-</p>
             <div class="add-to-cart-container">
                     <select name="quantity" class="quantity-select">
                         <option <% for (int i = 1; i <= 99; i++) { %>
@@ -118,7 +118,7 @@
             </div>
         </div>
         <div class="col-4">
-            <img src="Style/Pictures/jacket1.png">
+            <img src="Style/Pictures/jacket1.png" width="250px" height="250px">
             <h4>Name</h4>
             <div class="stock">
                 <div class="stock-info">
@@ -130,7 +130,7 @@
                     <i class="fa fa-times-circle"></i>
                 </div>
             </div>
-            <p>pris:-</p>
+            <p>price:-</p>
             <div class="add-to-cart-container">
                     <select name="quantity" class="quantity-select">
                         <option <% for (int i = 1; i <= 99; i++) { %>
@@ -142,7 +142,7 @@
             </div>
         </div>
         <div class="col-4">
-            <img src="Style/Pictures/jacket2.png">
+            <img src="Style/Pictures/jacket2.png" width="250px" height="250px">
             <h4>Name</h4>
             <div class="stock">
                 <div class="stock-info">
@@ -154,7 +154,7 @@
                     <i class="fa fa-times-circle"></i>
                 </div>
             </div>
-            <p>pris:-</p>
+            <p>price:-</p>
             <div class="add-to-cart-container">
                     <select name="quantity" class="quantity-select">
                         <option <% for (int i = 1; i <= 99; i++) { %>
@@ -166,7 +166,7 @@
             </div>
         </div>
         <div class="col-4">
-            <img src="Style/Pictures/gloves1.png">
+            <img src="Style/Pictures/gloves1.png" width="250px" height="250px">
             <h4>Name</h4>
             <div class="stock">
                 <div class="stock-info">
@@ -178,7 +178,7 @@
                     <i class="fa fa-times-circle"></i>
                 </div>
             </div>
-            <p>pris:-</p>
+            <p>price:-</p>
             <div class="add-to-cart-container">
                     <select name="quantity" class="quantity-select">
                         <option <% for (int i = 1; i <= 99; i++) { %>
@@ -190,7 +190,7 @@
             </div>
         </div>
         <div class="col-4">
-            <img src="Style/Pictures/gloves2.png">
+            <img src="Style/Pictures/gloves2.png" width="250px" height="250px">
             <h4>Name</h4>
             <div class="stock">
                 <div class="stock-info">
@@ -202,7 +202,7 @@
                     <i class="fa fa-times-circle"></i>
                 </div>
             </div>
-            <p>pris:-</p>
+            <p>price:-</p>
             <div class="add-to-cart-container">
                     <select name="quantity" class="quantity-select">
                         <option <% for (int i = 1; i <= 99; i++) { %>
@@ -214,7 +214,7 @@
             </div>
         </div>
         <div class="col-4">
-            <img src="Style/Pictures/knife1.png">
+            <img src="Style/Pictures/knife1.png" width="250px" height="250px">
             <h4>Name</h4>
             <div class="stock">
                 <div class="stock-info">
@@ -226,7 +226,7 @@
                     <i class="fa fa-times-circle"></i>
                 </div>
             </div>
-            <p>pris:-</p>
+            <p>price:-</p>
             <div class="add-to-cart-container">
                     <select name="quantity" class="quantity-select">
                         <option <% for (int i = 1; i <= 99; i++) { %>

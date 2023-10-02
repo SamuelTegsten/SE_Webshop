@@ -1,26 +1,30 @@
+/* Style for the container that holds the "add to cart" section */
 .add-to-cart-container {
-    padding-top: 10px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .quantity-select {
-    padding: 8px;
-    margin-right: 10px;
-    font-size: 16px;
-  }
-  
-  button.add-to-cart {
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
-  }
-  
-  button.add-to-cart:hover {
-    background-color: #45a049;
-  }
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the quantity select input field */
+.quantity-select {
+  padding: 8px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+/* Style for the "add to cart" button */
+button.add-to-cart {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+/* Style for the "add to cart" button on hover */
+button.add-to-cart:hover {
+  background-color: #45a049;
+}

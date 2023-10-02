@@ -1,22 +1,23 @@
-
-
 /* Style for the order table */
 .order-table {
     margin: 0 auto; /* Center the table horizontally */
     width: 80%; /* Adjust the width as needed */
 }
 
-.order-table h2{
+/* Style for the heading level 2 (h2) within elements with class "order-table" */
+.order-table h2 {
     padding: 20px;
     text-align: center;
 }
 
+/* Style for tables within elements with class "order-table" */
 .order-table table {
     width: 100%;
+    margin-bottom: 50px;
     border-collapse: collapse;
 }
 
-/* Style for table headers */
+/* Style for table header cells (th) within elements with class "order-table" */
 .order-table th {
     background-color: #f2f2f2;
     text-align: center;
@@ -25,19 +26,103 @@
     font-weight: bold;
 }
 
-/* Style for table rows */
+/* Style for table data cells (td) within elements with class "order-table" */
 .order-table td {
     text-align: center;
     padding: 8px;
     border: 1px solid #ddd;
 }
 
-/* Style for alternating row colors (optional) */
+/* Style for alternating row background colors within elements with class "order-table" */
 .order-table tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-/* Hover effect (optional) */
+/* Style for table rows on hover within elements with class "order-table" */
 .order-table tbody tr:hover {
     background-color: #ddd;
+}
+
+/* Style for buttons with class "pack-button" */
+.pack-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+/* Style for elements with class "add_item" */
+.add_item {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Style for heading level 2 (h2) within elements with class "add_item" */
+.add_item h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Style for elements with class "item_details" */
+.item_details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style for file input and text input fields within elements with class "item_details" */
+.item_details input[type="file"],
+.item_details input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Style for buttons with class "add_item_button" */
+.add_item_button {
+    background-color: #2a6219;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 30px;
+}
+
+/* Style for buttons with class "remove_item_button" */
+.remove_item_button {
+    background-color: #811414;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Style for button hover states */
+.add_item_button:hover {
+    background-color: #57dc35;
+}
+
+.remove_item_button:hover {
+    background-color: #c72020;
+}
+
+/* Style for file input and text input fields on hover */
+.item_details input[type="file"]:hover,
+.item_details input[type="text"]:hover {
+    background-color: #fff;
+    transition: background-color 0.3s ease;
 }

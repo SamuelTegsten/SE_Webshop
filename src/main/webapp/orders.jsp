@@ -93,6 +93,7 @@
             <input type="file" accept="image/*" id="item_image">
             <input type="text" placeholder="Item Name" id="item_name">
             <input type="text" placeholder="Item Category" id="item_category">
+            <input type="text" placeholder="Item Amount" id="item_amount">
             <button class="add_item_button">Add Item</button>
         </div>
     </div>
@@ -113,5 +114,21 @@
         </div>
     </div>
 </div>
+<script>
+    // Get the input element by its id
+    const itemAmountInput = document.getElementById("item_amount");
+
+    // Add an event listener to the input field
+    itemAmountInput.addEventListener("input", function (event) {
+        // Get the current input value
+        const inputValue = event.target.value;
+
+        // Remove any non-numeric characters using a regular expression
+        const numericValue = inputValue.replace(/[^0-9]/g, "");
+
+        // Update the input field with the numeric value
+        event.target.value = numericValue;
+    });
+</script>
 </body>
 </html>

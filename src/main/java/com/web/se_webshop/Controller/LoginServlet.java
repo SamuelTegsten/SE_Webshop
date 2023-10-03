@@ -23,6 +23,9 @@ public class LoginServlet extends HttpServlet {
         boolean loginSuccessful = checkLogin(username, password);
 
         if (loginSuccessful) {
+            // If login succeeds, print a message to the console
+            System.out.println("Login Successful");
+
             // If login is successful, set a session attribute to indicate no login error
             request.getSession().setAttribute("loginError", false);
 
@@ -30,7 +33,6 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("success.jsp");
 
         } else {
-
             // If login fails, print a message to the console
             System.out.println("Login failed");
 

@@ -93,26 +93,6 @@
             toggleLink.innerHTML = "Already have an account? <a href='#' onclick='toggleForms(event);'>Login</a>";
         }
     }
-
-    document.getElementById("login-form").addEventListener("submit", function(event) {
-        // Check if loginError is set to true in session
-        var loginError = <%= session.getAttribute("loginError") %>;
-
-        if (loginError) {
-            var tooltip = document.getElementById("login-failed-tooltip");
-
-            // Show the tooltip
-            tooltip.style.display = "block";
-
-            // Set a timeout to hide the tooltip after 5 seconds
-            setTimeout(function() {
-                tooltip.style.display = "none";
-            }, 5000); // 5000 milliseconds (5 seconds)
-
-            // Prevent form submission
-            event.preventDefault();
-        }
-    });
 </script>
 </body>
 </html>

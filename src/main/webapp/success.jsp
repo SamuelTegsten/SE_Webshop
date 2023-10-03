@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="Style/style.css">
     <!-- Link to the order-specific stylesheet -->
     <link rel="stylesheet" href="Style/orderStyle.css">
+    <!-- Link to the cart-style stylesheet -->
+    <link rel="stylesheet" href="Style/cartStyle.css">
     <!-- Link to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,16 +50,15 @@
 </div>
 
 <div class="order-table">
-    <h2>Order Table</h2>
+    <h2>#Name# Order Status</h2>
     <table>
         <thead>
         <tr>
             <th>Name</th>
             <th>Amount</th>
-            <th>Ordered By</th>
             <th>Date Ordered</th>
             <th>Order Status</th>
-            <th>Pack Order</th>
+            <th>Price</th>
         </tr>
         </thead>
         <tbody>
@@ -65,53 +66,27 @@
         <tr>
             <td>Sample Product 1</td>
             <td>5</td>
-            <td>John Doe</td>
             <td>2023-10-02</td>
-            <td>In Progress</td>
-            <td>
-                <input type="number" min="0" value="0" style="width: 40px;"> <!-- Quantity Input -->
-                <button class="pack-button">Pack Item</button> <!-- "Pack Item" Button -->
-            </td>
+            <td>Sent</td>
+            <td>59,99:-</td>
         </tr>
         <tr>
             <td>Sample Product 2</td>
             <td>3</td>
-            <td>Jane Smith</td>
             <td>2023-10-03</td>
             <td>In Progress</td>
-            <td>
-                <input type="number" min="0" value="0" style="width: 40px;">
-                <button class="pack-button">Pack Item</button>
-            </td>
+            <td>59,99:-</td>
         </tr>
         <!-- Add more rows as needed -->
         </tbody>
     </table>
-    <div class="add_item">
-        <h2>Add New Item</h2>
-        <div class="item_details">
-            <input type="file" accept="image/*" id="item_image">
-            <input type="text" placeholder="Item Name" id="item_name">
-            <input type="text" placeholder="Item Category" id="item_category">
-            <button class="add_item_button">Add Item</button>
-        </div>
+    <!-- Total amount display -->
+    <div class="total-amount">
+        <label for="total">Total Amount:</label>
+        <input type="text" id="total" name="total" readonly>
     </div>
-    <div class="add_item">
-        <h2>Remove Item</h2>
-        <div class="item_details">
-            <input type="text" placeholder="Item Name" id="item-name_remove">
-            <button class="remove_item_button">Remove Item</button>
-        </div>
-    </div>
-    <div class="add_item">
-        <h2>Update Item</h2>
-        <div class="item_details">
-            <input type="text" placeholder="Item Name" id="item_name_update">
-            <input type="file" accept="image/*" id="new_image">
-            <input type="text" placeholder="New Category" id="new_category">
-            <button class="add_item_button">Add Item</button>
-        </div>
-    </div>
+</div>
 </div>
 </body>
 </html>
+

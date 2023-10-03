@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
     private boolean checkLogin(String username, String password) {
         // In this example, the username and password are hardcoded for demonstration purposes
         // You should replace these with your actual authentication logic
-        if ("yourUsername".equals(username) && "yourPassword".equals(password)) {
+        if ("test".equals(username) && "test".equals(password)) {
             return true;
         }
         return false;

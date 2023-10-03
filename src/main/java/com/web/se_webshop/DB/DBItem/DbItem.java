@@ -25,8 +25,17 @@ public class DbItem extends Item {
             pstmt.setFloat(4, item.getPrice());
             pstmt.setInt(5, stockNumber);
 
+            pstmt.executeUpdate();
+
+            DBConnect.getConnection().commit();
+
         } catch (SQLException e) {
+            DBConnect.getConnection().rollback();
             throw new SQLException(e);
+        } finally {
+            if (pstmt != null) {
+                pstmt.close();
+            }
         }
     }
 }

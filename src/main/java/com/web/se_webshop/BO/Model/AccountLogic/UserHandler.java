@@ -1,11 +1,9 @@
-package com.web.se_webshop.BO.Handler.UserHandler;
-
-import com.web.se_webshop.BO.Model.AccountModel.User;
+package com.web.se_webshop.BO.Model.AccountLogic;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class userHandler {
+public class UserHandler {
     private static List<User> userList = new ArrayList<>();
 
     public static void addUser(User user) {

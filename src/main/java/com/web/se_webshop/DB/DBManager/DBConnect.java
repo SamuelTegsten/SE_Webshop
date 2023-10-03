@@ -3,7 +3,6 @@ package com.web.se_webshop.DB.DBManager;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class DBConnect {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/" + "sql_webshop"
@@ -29,17 +28,6 @@ public class DBConnect {
     }
     public static Connection getConnection() {
         return getInstance().connection;
-    }
-    public void disconnect() throws SQLException {
-        try {
-            if (connection != null) {
-                connection.close();
-                System.out.println("You have successfully disconnected");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new SQLException(e.getMessage(), e);
-        }
     }
 }
 

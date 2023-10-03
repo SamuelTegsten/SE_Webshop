@@ -1,13 +1,11 @@
-package com.web.se_webshop.BO.Model.AccountModel;
-
-import com.web.se_webshop.BO.Model.AccountModel.Permission;
+package com.web.se_webshop.BO.Model.AccountLogic;
 
 public class User {
     private String username;
     private String password;
     private Permission permission;
 
-    public User(String username, String password, Permission permission) {
+    protected User(String username, String password, Permission permission) {
         this.username = username;
         this.password = password;
         this.permission = permission;

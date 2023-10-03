@@ -1,4 +1,4 @@
-package com.web.se_webshop.BO.Model.ItemModel;
+package com.web.se_webshop.BO.Model.ItemLogic;
 
 public class Item {
     private String name;
@@ -6,7 +6,7 @@ public class Item {
     private String category;
     private float price;
 
-    public Item(String picture, String name, String category, float price) {
+    protected Item(String picture, String name, String category, float price) {
         this.picture = picture;
         this.name = name;
         this.category = category;

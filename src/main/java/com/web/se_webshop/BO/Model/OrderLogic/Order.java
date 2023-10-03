@@ -1,4 +1,4 @@
-package com.web.se_webshop.BO.Model.OrderModel;
+package com.web.se_webshop.BO.Model.OrderLogic;
 
 import java.util.Date;
 
@@ -10,7 +10,7 @@ public class Order {
     private OrderStatus status;
     private Date date;
 
-    public Order(String username, String itemName, int numberOfItems, String address, OrderStatus status) {
+    protected Order(String username, String itemName, int numberOfItems, String address, OrderStatus status) {
         this.username = username;
         this.itemName = itemName;
         this.numberOfItems = numberOfItems;

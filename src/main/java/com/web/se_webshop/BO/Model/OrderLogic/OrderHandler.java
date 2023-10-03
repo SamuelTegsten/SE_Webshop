@@ -1,12 +1,9 @@
-package com.web.se_webshop.BO.Handler.OrderHandler;
-
-import com.web.se_webshop.BO.Model.OrderModel.Order;
-import com.web.se_webshop.BO.Model.OrderModel.OrderStatus;
+package com.web.se_webshop.BO.Model.OrderLogic;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class orderHandler {
+public class OrderHandler {
     private static List<Order> orderList = new ArrayList<>();
 
     public static void addOrder(Order order) {

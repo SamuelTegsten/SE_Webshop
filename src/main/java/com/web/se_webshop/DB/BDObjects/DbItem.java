@@ -1,11 +1,10 @@
-package com.web.se_webshop.DB.DBItem;
+package com.web.se_webshop.DB.BDObjects;
 
-import com.web.se_webshop.BO.Model.ItemModel.Item;
+import com.web.se_webshop.BO.Model.ItemLogic.Item;
 import com.web.se_webshop.DB.DBManager.DBConnect;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class DbItem extends Item {
     private DbItem(String name, String picture, String category, float price) {

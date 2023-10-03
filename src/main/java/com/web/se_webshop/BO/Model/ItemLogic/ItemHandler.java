@@ -1,11 +1,9 @@
-package com.web.se_webshop.BO.Handler.ItemHandler;
-
-import com.web.se_webshop.BO.Model.ItemModel.Item;
+package com.web.se_webshop.BO.Model.ItemLogic;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class itemHandler {
+public class ItemHandler {
     private static List<Item> itemList = new ArrayList<>();
     public static void addItem(Item item) {
         itemList.add(item);

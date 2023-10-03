@@ -58,6 +58,7 @@
                 <th>Item Price</th>
                 <th>Item Category</th>
                 <th>Quantity</th>
+                <th>Address</th>
             </tr>
             </thead>
             <tbody>
@@ -74,6 +75,7 @@
                     <input type="number" name="quantity" value="1" min="1">
                     <button class="increase">+</button>
                 </td>
+                <td><input type="text" id="static_textarea_1" name="static_textarea"></td>
             </tr>
 
             <!-- Cart item 2 -->
@@ -88,8 +90,8 @@
                     <input type="number" name="quantity" value="1" min="1">
                     <button class="increase">+</button>
                 </td>
+                <td><input type="text" id="static_textarea_2" name="static_textarea"></td>
             </tr>
-
             </tbody>
         </table>
 

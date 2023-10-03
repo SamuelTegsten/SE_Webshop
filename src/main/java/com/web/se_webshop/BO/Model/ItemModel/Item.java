@@ -1,8 +1,8 @@
 package com.web.se_webshop.BO.Model.ItemModel;
 
 public class Item {
-    private String picture;
     private String name;
+    private String picture;
     private String category;
     private float price;
 

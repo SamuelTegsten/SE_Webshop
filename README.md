@@ -20,6 +20,7 @@ The home page is designed to provide a visually appealing and welcoming introduc
     <!--  HTML content for  home page here -->
 </body>
 </html>
+'''jsp
 
 ### PRODUCTS
 The products page displays a list of the products available for purchase in our webshop. Each product listing includes details such as product name, price, description, and an option to add the product to the cart.

@@ -1,4 +1,4 @@
-package com.web.se_webshop.Controller;
+package com.web.se_webshop.View.Controller;
 
 import java.io.*;
 

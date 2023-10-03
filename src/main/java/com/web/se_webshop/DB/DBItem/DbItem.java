@@ -12,7 +12,7 @@ public class DbItem extends Item {
         super(picture, name, category, price);
     }
 
-    public static void addItem(Item item, int stockNumber) throws SQLException {
+    public static void addItemDB(Item item, int stockNumber) throws SQLException {
 
         String sql = "INSERT INTO Item VALUES(?, ?, ?, ?, ?)";
         PreparedStatement pstmt = null;
@@ -31,6 +31,7 @@ public class DbItem extends Item {
 
         } catch (SQLException e) {
             DBConnect.getConnection().rollback();
+            e.printStackTrace();
             throw new SQLException(e);
         } finally {
             if (pstmt != null) {

@@ -9,7 +9,7 @@ public class TestAddItem {
 
     public static void main(String[] args) throws SQLException {
         DBConnect.connectToDB();
-        DbItem.addItem(new Item("pic", "Kniv","Kill" ,20.00F), 5);
+        DbItem.addItemDB(new Item("pic", "Kniv","Kill" ,20.00F), 5);
     }
 
 

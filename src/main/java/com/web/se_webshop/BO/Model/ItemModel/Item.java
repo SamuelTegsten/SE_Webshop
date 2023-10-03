@@ -4,11 +4,13 @@ public class Item {
     private String picture;
     private String name;
     private String category;
+    private float price;
 
-    public Item(String picture, String name, String category) {
+    public Item(String picture, String name, String category, float price) {
         this.picture = picture;
         this.name = name;
         this.category = category;
+        this.price = price;
     }
 
     public String getPicture() {
@@ -35,12 +37,21 @@ public class Item {
         this.category = category;
     }
 
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Item{" +
                 "picture='" + picture + '\'' +
                 ", name='" + name + '\'' +
                 ", category='" + category + '\'' +
+                ", price='" + price + '\'' +
                 '}';
     }
 }

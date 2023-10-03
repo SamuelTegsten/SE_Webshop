@@ -12,6 +12,6 @@ public class TestAddOrder {
     public static void main(String[] args) throws SQLException {
         DBConnect.getConnection();
         Date currentDate = new Date();
-        DbOrder.addOrder(new Order("samuel", "tent", 2, "ängsnäsvägen 4", OrderStatus.IN_PROGRESS));
+        DbOrder.addOrder(new Order("esteban", "knife", 3, "söder 123", OrderStatus.SENT));
     }
 }

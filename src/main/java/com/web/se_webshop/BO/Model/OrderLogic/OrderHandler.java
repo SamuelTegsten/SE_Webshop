@@ -7,7 +7,6 @@ public class OrderHandler {
     private static List<Order> orderList = new ArrayList<>();
 
     public static void addOrder(Order order) {
-        order.setDate();
         orderList.add(order);
     }
     public static List<Order> getAllOrders() {

@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DbOrder extends Order{
-    protected DbOrder(String username, String itemName, int numberOfItems, String address, OrderStatus orderStatus, Date date) {
+    protected DbOrder(String username, String itemName, int numberOfItems, String address, OrderStatus orderStatus, java.sql.Date date) {
         super(username, itemName, numberOfItems, address, orderStatus);
     }
     public static void addOrder(Order order) throws SQLException {

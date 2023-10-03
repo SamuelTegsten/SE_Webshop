@@ -8,7 +8,7 @@ public class Order {
     private int numberOfItems;
     private String address;
     private OrderStatus status;
-    private Date date;
+    private java.sql.Date date;
 
     protected Order(String username, String itemName, int numberOfItems, String address, OrderStatus status) {
         this.username = username;
@@ -16,6 +16,7 @@ public class Order {
         this.numberOfItems = numberOfItems;
         this.address = address;
         this.status = status;
+        this.date = new java.sql.Date(System.currentTimeMillis());
     }
 
     public String getUsername() {
@@ -37,10 +38,7 @@ public class Order {
         this.status = status;
     }
     public java.sql.Date getDate() {
-        return (java.sql.Date) date;
-    }
-    public void setDate() {
-        this.date = new Date();
+        return date;
     }
 
     @Override

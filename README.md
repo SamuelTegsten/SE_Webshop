@@ -8,6 +8,19 @@ Welcome to the Samuel & Esteban WebShop project! This web application is designe
 ### HOME
 The home page is designed to provide a visually appealing and welcoming introduction to our webshop. It includes promotional banners, featured products, and important business information.
 
+#### JSP View (index.jsp)
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta tags, title, and links here -->
+</head>
+<body>
+    <!--  HTML content for  home page here -->
+</body>
+</html>
+
 ### PRODUCTS
 The products page displays a list of the products available for purchase in our webshop. Each product listing includes details such as product name, price, description, and an option to add the product to the cart.
 

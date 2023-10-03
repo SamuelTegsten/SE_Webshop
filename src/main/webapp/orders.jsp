@@ -89,13 +89,16 @@
     </table>
     <div class="add_item">
         <h2>Add New Item</h2>
+        <form id="add-item-form" action="${pageContext.request.contextPath}/item-servlet" method="post">
         <div class="item_details">
             <input type="file" accept="image/*" id="item_image">
-            <input type="text" placeholder="Item Name" id="item_name">
-            <input type="text" placeholder="Item Category" id="item_category">
-            <input type="text" placeholder="Item Amount" id="item_amount">
-            <button class="add_item_button">Add Item</button>
+            <input type="text" name= "item_name" placeholder="Item Name" id="item_name">
+            <input type="text" name= "item_category" placeholder="Item Category" id="item_category">
+            <input type="text" name= "item_amount" placeholder="Item Amount" id="item_amount">
+            <button type="submit" class="add_item_button">Add Item</button>
         </div>
+        </form>
+
     </div>
     <div class="add_item">
         <h2>Remove Item</h2>

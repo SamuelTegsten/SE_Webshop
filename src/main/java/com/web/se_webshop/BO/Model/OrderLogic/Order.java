@@ -36,8 +36,8 @@ public class Order {
     public void setStatus(OrderStatus status) {
         this.status = status;
     }
-    public Date getDate() {
-        return date;
+    public java.sql.Date getDate() {
+        return (java.sql.Date) date;
     }
     public void setDate() {
         this.date = new Date();

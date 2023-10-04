@@ -17,34 +17,7 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
 </head>
 <body>
-<div class="header2">
-    <div class="container">
-        <div class="navbar">
-            <div class="logo">
-                <!-- Logo image -->
-                <img src="Style/Pictures/hunting_logo.png" width="170px">
-            </div>
-            <div class="nav-wrapper">
-                <nav class="navigation">
-                    <ul>
-                        <!-- Navigation links -->
-                        <li><a href="index.jsp">Home</a></li>
-                        <li><a href="product.jsp">Products</a></li>
-                        <li><a href="account.jsp">Account</a></li>
-                        <li><a href="orders.jsp">Orders</a></li>
-                        <li><a href="admin.jsp">Admin</a></li>
-                        <li>
-                            <a href="cart.jsp">
-                                <!-- Shopping cart icon -->
-                                <img src="Style/Pictures/white_shopping_cart.png" width="30px" height="30px">
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
+<jsp:include page="navbar.jsp"/>
 
 <div class="container">
     <h2>Admin Panel</h2>

@@ -5,6 +5,7 @@ import com.web.se_webshop.DB.DBManager.DBConnect;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * This class extends the Item class and provides functionality for executing CRUD operations on the database
@@ -21,6 +22,16 @@ public class DbItem extends Item {
     private DbItem(String name, String picture, String category, float price) {
         super(picture, name, category, price);
     }
+
+
+    //public static ArrayList<DbItem> searchItems
+
+
+
+
+
+
+
 
     /**
      * Adds an item to the database with a specified stock number.

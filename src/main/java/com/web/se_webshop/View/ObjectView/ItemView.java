@@ -36,4 +36,15 @@ public class ItemView {
     public int getStockNumber() {
         return stockNumber;
     }
+
+    @Override
+    public String toString() {
+        return "ItemView{" +
+                "name='" + name + '\'' +
+                ", picture='" + picture + '\'' +
+                ", category='" + category + '\'' +
+                ", price=" + price +
+                ", stockNumber=" + stockNumber +
+                '}';
+    }
 }

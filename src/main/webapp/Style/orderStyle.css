@@ -75,6 +75,13 @@
     align-items: center;
 }
 
+/* Style for elements with class "search_item" */
+.search_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* Style for file input and text input fields within elements with class "item_details" */
 .item_details input[type="file"],
 .item_details input[type="text"] {

@@ -22,16 +22,16 @@ public class DbItem extends Item {
      * @param price    The price of the item.
      */
     private DbItem(String name, String picture, String category, float price, int stockNumber) {
-        super(picture, name, category, price, stockNumber);
+        super(name, picture, category, price, stockNumber);
     }
 
 
-    public static ArrayList<DbItem> searchItems(String searchedName){
+    public static ArrayList<DbItem> searchItemDB(String searchText){
         ArrayList<DbItem> foundItems = new ArrayList<>();
         Connection con = DBConnect.getConnection();
         String sql = "SELECT * FROM item WHERE name LIKE ?";
         try(PreparedStatement pstm = con.prepareStatement(sql)) {
-            pstm.setString(1, "%" + searchedName + "%");
+            pstm.setString(1, "%" + searchText + "%");
             ResultSet pResultSet = pstm.executeQuery();
             while (pResultSet.next()) {
                 Item tempItem;
@@ -54,13 +54,6 @@ public class DbItem extends Item {
 
 
     }
-
-
-
-
-
-
-
 
     /**
      * Adds an item to the database with a specified stock number.

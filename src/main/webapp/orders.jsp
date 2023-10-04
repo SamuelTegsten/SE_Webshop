@@ -89,10 +89,10 @@
     </table>
     <div class="add_item">
         <h2>Add New Item</h2>
-        <form id="add-item-form" action="${pageContext.request.contextPath}/item-servlet" method="post">
+        <form id="add-item-form" action="${pageContext.request.contextPath}/add-item-servlet" method="post" enctype="multipart/form-data">
             <div class="item_details">
-                <input type="file" accept="image/*" id="item_image">
-                <input type="text" name= "item_name" placeholder="Item Name" id="item_name">
+                <input type="file" name= "item_image" accept="image/*" id="item_image">
+                <input type="text" name= "item_name" placeholder="Item Name" id="item_name" >
                 <input type="text" name= "item_category" placeholder="Item Category" id="item_category">
                 <input type="text" name= "item_price" placeholder="Item Price" id="item_price">
                 <input type="text" name= "item_amount" placeholder="Item Amount" id="item_amount">

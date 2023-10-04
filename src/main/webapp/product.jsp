@@ -21,8 +21,9 @@
 
 <div class="small-container">
     <h2 class="title">Products</h2>
-    <form id="search-items-form" action="${pageContext.request.contextPath}/SearchItemServlet" method="post">
+    <form id="search-items-form" action="${pageContext.request.contextPath}/item-servlet" method="post">
         <div class="search_item">
+            <input type="hidden" name="command" value="SEARCH">
             <input type="text" name="search_text">
             <button type="submit">Search</button>
         </div>

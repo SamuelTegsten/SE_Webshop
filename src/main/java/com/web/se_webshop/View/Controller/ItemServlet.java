@@ -8,21 +8,48 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
 
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static com.web.se_webshop.BO.Model.ItemLogic.ItemHandler.addItem;
+import static com.web.se_webshop.BO.Model.ItemLogic.ItemHandler.searchItem;
+
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
         maxFileSize = 1024 * 1024 * 10,      // 10 MB
         maxRequestSize = 1024 * 1024 * 100   // 100 MB
 )
-@WebServlet(name = "AddItemServlet", value = "/add-item-servlet")
-public class AddItemServlet extends HttpServlet {
+@WebServlet(name = "AddItemServlet", value = "/item-servlet")
+public class ItemServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String command = request.getParameter("command");
+
+        switch (command) {
+            case "ADD":
+                addItemServlet(request, response);
+                break;
+            case "SEARCH":
+                searchItemServlet(request,response);
+                break;
+        }
+    }
+
+
+    
+    private void searchItemServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<ItemView> foundItems;
+        String searchText = request.getParameter("search_text");
+        foundItems = searchItem(searchText);
+        request.setAttribute("found-items", foundItems);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product.jsp");
+        dispatcher.forward(request,response);
+    }
+
+    private void addItemServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         // Retrieve information from request
         String name = request.getParameter("item_name");
         String fileName = "Style/Pictures/" + request.getPart("item_image").getSubmittedFileName();
@@ -52,4 +79,5 @@ public class AddItemServlet extends HttpServlet {
             dispatcher.forward(request, response);
         }
     }
+
 }

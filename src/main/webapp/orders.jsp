@@ -62,8 +62,9 @@
     </table>
     <div class="add_item">
         <h2>Add New Item</h2>
-        <form id="add-item-form" action="${pageContext.request.contextPath}/add-item-servlet" method="post" enctype="multipart/form-data">
+        <form id="add-item-form" action="${pageContext.request.contextPath}/item-servlet" method="post" enctype="multipart/form-data">
             <div class="item_details">
+                <input type="hidden" name="command" value="ADD">
                 <input type="file" name= "item_image" accept="image/*" id="item_image">
                 <input type="text" name= "item_name" placeholder="Item Name" id="item_name" >
                 <input type="text" name= "item_category" placeholder="Item Category" id="item_category">

@@ -35,16 +35,22 @@
         for(ItemView item : foundItems){
     %>
         <img src=<%=item.getPicture()%> width="250px" height="250px">
-        <h4>Name</h4>
+        <h3><%=item.getName()%></h3>
+
         <div class="stock">
+            <%
+                if(item.getStockNumber()> 0){
+            %>
             <div class="stock-info">
                 <h5>In Stock</h5>
                 <i class="fa fa-check-circle"></i>
             </div>
+            <%} else{%>
             <div class="stock-info-1">
                 <h5>Out of Stock</h5>
                 <i class="fa fa-times-circle"></i>
             </div>
+            <% }%>
         </div>
         <p>price:-</p>
         <div class="add-to-cart-container">

@@ -1,3 +1,5 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.web.se_webshop.View.ObjectView.ItemView" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +20,47 @@
 
 <div class="small-container">
     <h2 class="title">All Products</h2>
+    <form id="search-items-form" action="${pageContext.request.contextPath}/SearchItemServlet" method="post">
+        <div class = "search_item">
+            <input type="text" name="search_text">
+            <button type="submit">Search</button>
+        </div>
+    </form>
     <div class="row">
+
+    <div class="col-4">
+    <%
+        ArrayList<ItemView> foundItems = (ArrayList<ItemView>) request.getAttribute("found-items");
+        if(foundItems!=null){
+        for(ItemView item : foundItems){
+    %>
+        <img src=<%=item.getPicture()%> width="250px" height="250px">
+        <h4>Name</h4>
+        <div class="stock">
+            <div class="stock-info">
+                <h5>In Stock</h5>
+                <i class="fa fa-check-circle"></i>
+            </div>
+            <div class="stock-info-1">
+                <h5>Out of Stock</h5>
+                <i class="fa fa-times-circle"></i>
+            </div>
+        </div>
+        <p>price:-</p>
+        <div class="add-to-cart-container">
+            <form action="AddToCartServlet" method="post">
+                <select name="quantity" class="quantity-select">
+                    <option <% for (int i = 1; i <= 99; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                    <% } %>
+                </select>
+                <input type="hidden" name="productId" value="1">
+                <button type="submit" class="add-to-cart">Add to Cart</button>
+            </form>
+        </div>
+        <% } }%>
+    </div>
+<!--
         <div class="col-4">
             <img src="Style/Pictures/tent1.png" width="250px" height="250px">
             <h4>Name</h4>
@@ -39,7 +81,6 @@
                         <option <% for (int i = 1; i <= 99; i++) { %>
                         <option value="<%= i %>"><%= i %></option>
                             <% } %>
-                        <!-- Add more quantity options as needed -->
                     </select>
                     <input type="hidden" name="productId" value="1">
                     <button type="submit" class="add-to-cart">Add to Cart</button>
@@ -65,7 +106,6 @@
                         <option <% for (int i = 1; i <= 99; i++) { %>
                         <option value="<%= i %>"><%= i %></option>
                             <% } %>
-                        <!-- Add more quantity options as needed -->
                     </select>
                 <button class="add-to-cart">Add to Cart</button>
             </div>
@@ -89,7 +129,6 @@
                         <option <% for (int i = 1; i <= 99; i++) { %>
                         <option value="<%= i %>"><%= i %></option>
                             <% } %>
-                        <!-- Add more quantity options as needed -->
                     </select>
                 <button class="add-to-cart">Add to Cart</button>
             </div>
@@ -113,7 +152,6 @@
                         <option <% for (int i = 1; i <= 99; i++) { %>
                         <option value="<%= i %>"><%= i %></option>
                             <% } %>
-                        <!-- Add more quantity options as needed -->
                     </select>
                 <button class="add-to-cart">Add to Cart</button>
             </div>
@@ -137,7 +175,6 @@
                         <option <% for (int i = 1; i <= 99; i++) { %>
                         <option value="<%= i %>"><%= i %></option>
                             <% } %>
-                        <!-- Add more quantity options as needed -->
                     </select>
                 <button class="add-to-cart">Add to Cart</button>
             </div>
@@ -161,7 +198,6 @@
                         <option <% for (int i = 1; i <= 99; i++) { %>
                         <option value="<%= i %>"><%= i %></option>
                             <% } %>
-                        <!-- Add more quantity options as needed -->
                     </select>
                 <button class="add-to-cart">Add to Cart</button>
             </div>
@@ -185,7 +221,6 @@
                         <option <% for (int i = 1; i <= 99; i++) { %>
                         <option value="<%= i %>"><%= i %></option>
                             <% } %>
-                        <!-- Add more quantity options as needed -->
                     </select>
                 <button class="add-to-cart">Add to Cart</button>
             </div>
@@ -209,11 +244,11 @@
                         <option <% for (int i = 1; i <= 99; i++) { %>
                         <option value="<%= i %>"><%= i %></option>
                             <% } %>
-                        <!-- Add more quantity options as needed -->
                     </select>
                 <button class="add-to-cart">Add to Cart</button>
             </div>
         </div>
+        -->
     </div>
 </div>
 </body>

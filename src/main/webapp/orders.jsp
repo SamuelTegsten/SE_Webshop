@@ -89,7 +89,7 @@
     </table>
     <div class="add_item">
         <h2>Add New Item</h2>
-        <form id="add-item-form" action="${pageContext.request.contextPath}/item-servlet" method="post">
+        <form id="add-item-form" action="${pageContext.request.contextPath}/add-item-servlet" method="post">
             <div class="item_details">
                 <input type="file" accept="image/*" id="item_image">
                 <input type="text" name= "item_name" placeholder="Item Name" id="item_name">

@@ -11,6 +11,10 @@ public class ItemHandler {
     public static boolean addItem(ItemView itemView) throws SQLException {
         return Item.addItem(itemView);
     }
+
+    public static ArrayList<ItemView> searchItem(String searchText){
+        return Item.searchItem(searchText);
+    }
     public static List<Item> getAllItems() {
         return itemList;
     }

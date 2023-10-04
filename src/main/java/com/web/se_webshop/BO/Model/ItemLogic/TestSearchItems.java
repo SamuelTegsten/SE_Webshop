@@ -6,6 +6,6 @@ import com.web.se_webshop.DB.DBManager.DBConnect;
 public class TestSearchItems {
     public static void main(String[] args) {
         DBConnect.getConnection();
-        System.out.println(DbItem.searchItems(""));
+        System.out.println(DbItem.searchItemDB("Casco"));
     }
 }

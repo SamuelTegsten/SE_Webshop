@@ -1,6 +1,5 @@
 package com.web.se_webshop.View.Controller;
 
-import com.web.se_webshop.DB.DBManager.DBConnect;
 import com.web.se_webshop.View.ObjectView.ItemView;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -14,8 +13,8 @@ import java.sql.SQLException;
 
 import static com.web.se_webshop.BO.Model.ItemLogic.ItemHandler.addItem;
 
-@WebServlet(name = "ItemServlet", value = "/item-servlet")
-public class ItemServlet extends HttpServlet {
+@WebServlet(name = "AddItemServlet", value = "/add-item-servlet")
+public class AddItemServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         // Retrieve information from request
         String name = request.getParameter("item_name");
@@ -25,7 +24,7 @@ public class ItemServlet extends HttpServlet {
 
         boolean addItemSuccess;
         try {
-            addItemSuccess = addItem(new ItemView(name, "pic3", category, price, stockNumber));
+            addItemSuccess = addItem(new ItemView(name, "Style/Pictures/tent1.png", category, price, stockNumber));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

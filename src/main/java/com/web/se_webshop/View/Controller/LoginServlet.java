@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet(name = "LoginServlet", value = "/login-servlet")
 public class LoginServlet extends HttpServlet {
@@ -18,6 +19,7 @@ public class LoginServlet extends HttpServlet {
         // Retrieve username and password from the request parameters
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        HttpSession session = request.getSession();
 
         // Check if the login is successful by calling the checkLogin method
         boolean loginSuccessful = checkLogin(username, password);
@@ -27,7 +29,7 @@ public class LoginServlet extends HttpServlet {
             System.out.println("Login Successful");
 
             // If login is successful, set a session attribute to indicate no login error
-            request.getSession().setAttribute("loginError", false);
+            session.setAttribute("loginError", false);
 
             // Redirect the user to a success page (success.jsp)
             response.sendRedirect("success.jsp");
@@ -37,7 +39,7 @@ public class LoginServlet extends HttpServlet {
             System.out.println("Login failed");
 
             // Set a session attribute to indicate a login error
-            request.getSession().setAttribute("loginError", true);
+            session.setAttribute("loginError", true);
 
             // Forward the request to an account page (account.jsp)
             RequestDispatcher dispatcher = request.getRequestDispatcher("account.jsp");

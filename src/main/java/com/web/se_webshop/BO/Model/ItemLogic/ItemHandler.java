@@ -8,8 +8,8 @@ import java.util.List;
 
 public class ItemHandler {
     private static List<Item> itemList = new ArrayList<>();
-    public static boolean addItem(ItemView itemView, int stockNumber) throws SQLException {
-        return Item.addItem(itemView, stockNumber);
+    public static boolean addItem(ItemView itemView) throws SQLException {
+        return Item.addItem(itemView);
     }
     public static List<Item> getAllItems() {
         return itemList;

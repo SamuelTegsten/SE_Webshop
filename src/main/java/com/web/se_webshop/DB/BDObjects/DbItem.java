@@ -3,7 +3,9 @@ package com.web.se_webshop.DB.BDObjects;
 import com.web.se_webshop.BO.Model.ItemLogic.Item;
 import com.web.se_webshop.DB.DBManager.DBConnect;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -19,12 +21,39 @@ public class DbItem extends Item {
      * @param category The category of the item.
      * @param price    The price of the item.
      */
-    private DbItem(String name, String picture, String category, float price) {
-        super(picture, name, category, price);
+    private DbItem(String name, String picture, String category, float price, int stockNumber) {
+        super(picture, name, category, price, stockNumber);
     }
 
 
-    //public static ArrayList<DbItem> searchItems
+    public static ArrayList<DbItem> searchItems(String searchedName){
+        ArrayList<DbItem> foundItems = new ArrayList<>();
+        Connection con = DBConnect.getConnection();
+        String sql = "SELECT * FROM item WHERE name LIKE ?";
+        try(PreparedStatement pstm = con.prepareStatement(sql)) {
+            pstm.setString(1, "%" + searchedName + "%");
+            ResultSet pResultSet = pstm.executeQuery();
+            while (pResultSet.next()) {
+                Item tempItem;
+                foundItems.add(new DbItem(
+                        pResultSet.getString("name"),
+                        pResultSet.getString("picture"),
+                        pResultSet.getString("category"),
+                        pResultSet.getFloat("price"),
+                        pResultSet.getInt("stockNumber")
+                ));
+
+            }
+            return (ArrayList<DbItem>) foundItems.clone();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+
+
+    }
 
 
 
@@ -40,7 +69,7 @@ public class DbItem extends Item {
      * @throws SQLException If a database error occurs during the operation.
      */
 
-    public static boolean addItemDB(Item item, int stockNumber) throws SQLException {
+    public static boolean addItemDB(Item item) throws SQLException {
         // SQL statement for inserting a new item with stock number.
         String sql = "INSERT INTO Item VALUES(?, ?, ?, ?, ?)";
         PreparedStatement pstmt = null;
@@ -53,7 +82,7 @@ public class DbItem extends Item {
             pstmt.setString(2, item.getPicture());
             pstmt.setString(3, item.getCategory());
             pstmt.setFloat(4, item.getPrice());
-            pstmt.setInt(5, stockNumber);
+            pstmt.setInt(5, item.getStockNumber());
 
             // Execute the SQL statement to insert the item.
             pstmt.executeUpdate();
@@ -72,4 +101,6 @@ public class DbItem extends Item {
             }
         }
     }
+
+
 }

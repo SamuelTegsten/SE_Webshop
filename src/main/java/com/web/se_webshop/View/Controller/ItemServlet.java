@@ -21,11 +21,11 @@ public class ItemServlet extends HttpServlet {
         String name = request.getParameter("item_name");
         String category = request.getParameter("item_category");
         float price = Float.parseFloat(request.getParameter("item_price"));
-        int itemAmount = Integer.parseInt(request.getParameter("item_amount"));
+        int stockNumber = Integer.parseInt(request.getParameter("item_amount"));
 
         boolean addItemSuccess;
         try {
-            addItemSuccess = addItem(new ItemView(name, "pic3", category, price), itemAmount);
+            addItemSuccess = addItem(new ItemView(name, "pic3", category, price, stockNumber));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

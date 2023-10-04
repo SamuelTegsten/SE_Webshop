@@ -7,11 +7,14 @@ public class ItemView {
     private String category;
     private float price;
 
-    public ItemView(String name, String picture, String category, float price) {
+    private int stockNumber;
+
+    public ItemView(String name, String picture, String category, float price, int stockNumber) {
         this.name = name;
         this.picture = picture;
         this.category = category;
         this.price = price;
+        this.stockNumber = stockNumber;
     }
 
     public String getName() {
@@ -28,5 +31,9 @@ public class ItemView {
 
     public float getPrice() {
         return price;
+    }
+
+    public int getStockNumber() {
+        return stockNumber;
     }
 }

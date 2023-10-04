@@ -12,15 +12,18 @@ public class Item {
     private String category;
     private float price;
 
-    protected Item(String name, String picture, String category, float price) {
+    private int stockNumber;
+
+    protected Item(String name, String picture, String category, float price, int stockNumber) {
         this.picture = picture;
         this.name = name;
         this.category = category;
         this.price = price;
+        this.stockNumber = stockNumber;
     }
 
-    static public boolean addItem(ItemView itemView, int stockNumber) throws SQLException {
-        return addItemDB(new Item(itemView.getName(), itemView.getPicture(), itemView.getCategory(), itemView.getPrice()), stockNumber);
+    static public boolean addItem(ItemView itemView) throws SQLException {
+        return addItemDB(new Item(itemView.getName(), itemView.getPicture(), itemView.getCategory(), itemView.getPrice(), itemView.getStockNumber()));
     }
 
     public String getPicture() {
@@ -53,6 +56,10 @@ public class Item {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public int getStockNumber() {
+        return stockNumber;
     }
 
     @Override

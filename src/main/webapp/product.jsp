@@ -20,7 +20,7 @@
 <jsp:include page="navbar.jsp"/>
 
 <div class="small-container">
-    <h2 class="title">All Products</h2>
+    <h2 class="title">Products</h2>
     <form id="search-items-form" action="${pageContext.request.contextPath}/SearchItemServlet" method="post">
         <div class="search_item">
             <input type="text" name="search_text">

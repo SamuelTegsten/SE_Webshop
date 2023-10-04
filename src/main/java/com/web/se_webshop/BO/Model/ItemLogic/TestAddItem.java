@@ -9,6 +9,6 @@ public class TestAddItem {
 
     public static void main(String[] args) throws SQLException {
         DBConnect.getConnection();
-        DbItem.addItem(new Item("Style/Pictures/knife1.png", "Army Knife","Knives" ,149.99F), 3);
+        DbItem.addItemDB(new Item("Style/Pictures/knife1.png", "Army Knife","Knives" ,149.99F), 3);
     }
 }

@@ -29,12 +29,13 @@ public class DbItem extends Item {
      * @throws SQLException If a database error occurs during the operation.
      */
 
-    public static void addItem(Item item, int stockNumber) throws SQLException {
+    public static boolean addItemDB(Item item, int stockNumber) throws SQLException {
         // SQL statement for inserting a new item with stock number.
         String sql = "INSERT INTO Item VALUES(?, ?, ?, ?, ?)";
         PreparedStatement pstmt = null;
         try {
             // Prepare the SQL statement and disable auto-commit to start a transaction.
+            DBConnect.getConnection();
             pstmt = DBConnect.getConnection().prepareStatement(sql);
             DBConnect.getConnection().setAutoCommit(false);
             pstmt.setString(1, item.getName());
@@ -48,7 +49,7 @@ public class DbItem extends Item {
 
             // Commit the transaction to save changes to the database.
             DBConnect.getConnection().commit();
-
+            return true;
         } catch (SQLException e) {
             // Rollback the transaction and throw an exception if a database error occurs.
             DBConnect.getConnection().rollback();

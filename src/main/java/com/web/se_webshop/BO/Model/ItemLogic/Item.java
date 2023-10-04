@@ -1,16 +1,26 @@
 package com.web.se_webshop.BO.Model.ItemLogic;
 
+import com.web.se_webshop.View.ObjectView.ItemView;
+
+import java.sql.SQLException;
+
+import static com.web.se_webshop.DB.BDObjects.DbItem.addItemDB;
+
 public class Item {
     private String name;
     private String picture;
     private String category;
     private float price;
 
-    protected Item(String picture, String name, String category, float price) {
+    protected Item(String name, String picture, String category, float price) {
         this.picture = picture;
         this.name = name;
         this.category = category;
         this.price = price;
+    }
+
+    static public boolean addItem(ItemView itemView, int stockNumber) throws SQLException {
+        return addItemDB(new Item(itemView.getName(), itemView.getPicture(), itemView.getCategory(), itemView.getPrice()), stockNumber);
     }
 
     public String getPicture() {

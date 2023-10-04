@@ -1,12 +1,15 @@
 package com.web.se_webshop.BO.Model.ItemLogic;
 
+import com.web.se_webshop.View.ObjectView.ItemView;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemHandler {
     private static List<Item> itemList = new ArrayList<>();
-    public static void addItem(Item item) {
-        itemList.add(item);
+    public static boolean addItem(ItemView itemView, int stockNumber) throws SQLException {
+        return Item.addItem(itemView, stockNumber);
     }
     public static List<Item> getAllItems() {
         return itemList;

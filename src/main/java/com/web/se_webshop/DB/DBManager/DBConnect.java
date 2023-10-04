@@ -23,7 +23,7 @@ public class DBConnect {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
-            System.out.println("Connected!");
+            System.out.println("Connected to MySQL!");
         } catch (Exception e){e.printStackTrace();}
     }
     public static Connection getConnection() {

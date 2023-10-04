@@ -1,6 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.web.se_webshop.View.ObjectView.ItemView" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="Style/productStyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
 </head>
 <body>
@@ -21,240 +22,57 @@
 <div class="small-container">
     <h2 class="title">All Products</h2>
     <form id="search-items-form" action="${pageContext.request.contextPath}/SearchItemServlet" method="post">
-        <div class = "search_item">
+        <div class="search_item">
             <input type="text" name="search_text">
             <button type="submit">Search</button>
         </div>
     </form>
     <div class="row">
 
-    <div class="col-4">
-    <%
-        ArrayList<ItemView> foundItems = (ArrayList<ItemView>) request.getAttribute("found-items");
-        if(foundItems!=null){
-        for(ItemView item : foundItems){
-    %>
-        <img src=<%=item.getPicture()%> width="250px" height="250px">
-        <h3><%=item.getName()%></h3>
+        <!-- The Products are looped here -->
 
-        <div class="stock">
-            <%
-                if(item.getStockNumber()> 0){
-            %>
-            <div class="stock-info">
-                <h5>In Stock</h5>
-                <i class="fa fa-check-circle"></i>
-            </div>
-            <%} else{%>
-            <div class="stock-info-1">
-                <h5>Out of Stock</h5>
-                <i class="fa fa-times-circle"></i>
-            </div>
-            <% }%>
-        </div>
-        <p>price:-</p>
-        <div class="add-to-cart-container">
-            <form action="AddToCartServlet" method="post">
-                <select name="quantity" class="quantity-select">
-                    <option <% for (int i = 1; i <= 99; i++) { %>
-                    <option value="<%= i %>"><%= i %></option>
-                    <% } %>
-                </select>
-                <input type="hidden" name="productId" value="1">
-                <button type="submit" class="add-to-cart">Add to Cart</button>
-            </form>
-        </div>
-        <% } }%>
-    </div>
-<!--
+        <%
+            ArrayList<ItemView> foundItems = (ArrayList<ItemView>) request.getAttribute("found-items");
+            if (foundItems != null) {
+                for (ItemView item : foundItems) {
+        %>
         <div class="col-4">
-            <img src="Style/Pictures/tent1.png" width="250px" height="250px">
-            <h4>Name</h4>
+            <img src=<%=item.getPicture()%> width="250px" height="250px">
+            <h3><%=item.getName()%>
+            </h3>
+
             <div class="stock">
+                <%
+                    if (item.getStockNumber() > 0) {
+                %>
                 <div class="stock-info">
                     <h5>In Stock</h5>
                     <i class="fa fa-check-circle"></i>
                 </div>
+                <%} else {%>
                 <div class="stock-info-1">
                     <h5>Out of Stock</h5>
                     <i class="fa fa-times-circle"></i>
                 </div>
+                <% }%>
             </div>
             <p>price:-</p>
             <div class="add-to-cart-container">
                 <form action="AddToCartServlet" method="post">
                     <select name="quantity" class="quantity-select">
-                        <option <% for (int i = 1; i <= 99; i++) { %>
-                        <option value="<%= i %>"><%= i %></option>
-                            <% } %>
+                        <option
+                        <% for (int i = 1; i <= 99; i++) { %>
+                        <option value="<%= i %>"><%= i %>
+                        </option>
+                        <% } %>
                     </select>
                     <input type="hidden" name="productId" value="1">
                     <button type="submit" class="add-to-cart">Add to Cart</button>
                 </form>
             </div>
         </div>
-        <div class="col-4">
-            <img src="Style/Pictures/knife1.png" width="250px" height="250px">
-            <h4>Name</h4>
-            <div class="stock">
-                <div class="stock-info">
-                    <h5>In Stock</h5>
-                    <i class="fa fa-check-circle"></i>
-                </div>
-                <div class="stock-info-1">
-                    <h5>Out of Stock</h5>
-                    <i class="fa fa-times-circle"></i>
-                </div>
-            </div>
-            <p>price:-</p>
-            <div class="add-to-cart-container">
-                    <select name="quantity" class="quantity-select">
-                        <option <% for (int i = 1; i <= 99; i++) { %>
-                        <option value="<%= i %>"><%= i %></option>
-                            <% } %>
-                    </select>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-        </div>
-        <div class="col-4">
-            <img src="Style/Pictures/binoculars1.png" width="250px" height="250px">
-            <h4>Name</h4>
-            <div class="stock">
-                <div class="stock-info">
-                    <h5>In Stock</h5>
-                    <i class="fa fa-check-circle"></i>
-                </div>
-                <div class="stock-info-1">
-                    <h5>Out of Stock</h5>
-                    <i class="fa fa-times-circle"></i>
-                </div>
-            </div>
-            <p>price:-</p>
-            <div class="add-to-cart-container">
-                    <select name="quantity" class="quantity-select">
-                        <option <% for (int i = 1; i <= 99; i++) { %>
-                        <option value="<%= i %>"><%= i %></option>
-                            <% } %>
-                    </select>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-        </div>
-        <div class="col-4">
-            <img src="Style/Pictures/jacket1.png" width="250px" height="250px">
-            <h4>Name</h4>
-            <div class="stock">
-                <div class="stock-info">
-                    <h5>In Stock</h5>
-                    <i class="fa fa-check-circle"></i>
-                </div>
-                <div class="stock-info-1">
-                    <h5>Out of Stock</h5>
-                    <i class="fa fa-times-circle"></i>
-                </div>
-            </div>
-            <p>price:-</p>
-            <div class="add-to-cart-container">
-                    <select name="quantity" class="quantity-select">
-                        <option <% for (int i = 1; i <= 99; i++) { %>
-                        <option value="<%= i %>"><%= i %></option>
-                            <% } %>
-                    </select>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-        </div>
-        <div class="col-4">
-            <img src="Style/Pictures/jacket2.png" width="250px" height="250px">
-            <h4>Name</h4>
-            <div class="stock">
-                <div class="stock-info">
-                    <h5>In Stock</h5>
-                    <i class="fa fa-check-circle"></i>
-                </div>
-                <div class="stock-info-1">
-                    <h5>Out of Stock</h5>
-                    <i class="fa fa-times-circle"></i>
-                </div>
-            </div>
-            <p>price:-</p>
-            <div class="add-to-cart-container">
-                    <select name="quantity" class="quantity-select">
-                        <option <% for (int i = 1; i <= 99; i++) { %>
-                        <option value="<%= i %>"><%= i %></option>
-                            <% } %>
-                    </select>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-        </div>
-        <div class="col-4">
-            <img src="Style/Pictures/gloves1.png" width="250px" height="250px">
-            <h4>Name</h4>
-            <div class="stock">
-                <div class="stock-info">
-                    <h5>In Stock</h5>
-                    <i class="fa fa-check-circle"></i>
-                </div>
-                <div class="stock-info-1">
-                    <h5>Out of Stock</h5>
-                    <i class="fa fa-times-circle"></i>
-                </div>
-            </div>
-            <p>price:-</p>
-            <div class="add-to-cart-container">
-                    <select name="quantity" class="quantity-select">
-                        <option <% for (int i = 1; i <= 99; i++) { %>
-                        <option value="<%= i %>"><%= i %></option>
-                            <% } %>
-                    </select>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-        </div>
-        <div class="col-4">
-            <img src="Style/Pictures/gloves2.png" width="250px" height="250px">
-            <h4>Name</h4>
-            <div class="stock">
-                <div class="stock-info">
-                    <h5>In Stock</h5>
-                    <i class="fa fa-check-circle"></i>
-                </div>
-                <div class="stock-info-1">
-                    <h5>Out of Stock</h5>
-                    <i class="fa fa-times-circle"></i>
-                </div>
-            </div>
-            <p>price:-</p>
-            <div class="add-to-cart-container">
-                    <select name="quantity" class="quantity-select">
-                        <option <% for (int i = 1; i <= 99; i++) { %>
-                        <option value="<%= i %>"><%= i %></option>
-                            <% } %>
-                    </select>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-        </div>
-        <div class="col-4">
-            <img src="Style/Pictures/knife1.png" width="250px" height="250px">
-            <h4>Name</h4>
-            <div class="stock">
-                <div class="stock-info">
-                    <h5>In Stock</h5>
-                    <i class="fa fa-check-circle"></i>
-                </div>
-                <div class="stock-info-1">
-                    <h5>Out of Stock</h5>
-                    <i class="fa fa-times-circle"></i>
-                </div>
-            </div>
-            <p>price:-</p>
-            <div class="add-to-cart-container">
-                    <select name="quantity" class="quantity-select">
-                        <option <% for (int i = 1; i <= 99; i++) { %>
-                        <option value="<%= i %>"><%= i %></option>
-                            <% } %>
-                    </select>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-        </div>
-        -->
+        <% }
+        }%>
     </div>
 </div>
 </body>

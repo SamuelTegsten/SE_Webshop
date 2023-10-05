@@ -1,4 +1,5 @@
-<%
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Arrays" %><%
     String userRole = (String) session.getAttribute("userRole");
 %>
 

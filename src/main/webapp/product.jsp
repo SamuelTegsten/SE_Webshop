@@ -68,7 +68,8 @@
                 <form action="AddToCartServlet" method="post">
                     <select name="quantity" class="quantity-select">
                         <option
-                        <% for (int i = 1; i <= 99; i++) { %>
+                        <% int stockNumber = item.getStockNumber();
+                            for (int i = 1; i <= stockNumber; i++) { %>
                         <option value="<%= i %>"><%= i %>
                         </option>
                         <% } %>

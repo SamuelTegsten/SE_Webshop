@@ -1,5 +1,10 @@
 package com.web.se_webshop.BO.Model.OrderLogic;
 
+import com.web.se_webshop.DB.BDObjects.DbOrder;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 public class Order {
@@ -17,6 +22,10 @@ public class Order {
         this.address = address;
         this.status = status;
         this.date = new java.sql.Date(System.currentTimeMillis());
+    }
+
+    public static boolean addOrder(ArrayList<Order> orders) throws SQLException {
+        return DbOrder.addOrderDB(orders);
     }
 
     public String getUsername() {

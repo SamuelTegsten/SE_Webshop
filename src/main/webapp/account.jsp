@@ -22,7 +22,7 @@
 
 <div class="login-container">
     <h2 id="form-title">Login</h2>
-    <form id="login-form" action="${pageContext.request.contextPath}/login-servlet" method="post">
+    <form id="login-form" action="${pageContext.request.contextPath}/account-servlet" method="post">
         <!-- Input fields for username and password -->
         <input type="text" name="username" class="form-input" placeholder="Username" required id="username-input">
         <input type="password" name="password" class="form-input" placeholder="Password" required id="password-input">
@@ -31,19 +31,28 @@
     </form>
     <p class="toggle-link" id="toggle-link">Don't have an account? <a href="#" onclick="toggleForms(event);">Register</a></p>
 
-    <form id="register-form" action="${pageContext.request.contextPath}/register-servlet" method="post" style="display: none;">
+    <form id="register-form" action="${pageContext.request.contextPath}/account-servlet" method="post" style="display: none;">
         <!-- Input fields for new username and password (for registration) -->
         <input type="text" name="newUsername" class="form-input" placeholder="New Username" required id="new-username-input">
-        <input type="text" name="newPassword" class="form-input" placeholder="New Password" required id="new-password-input">
+        <input type="password" name="newPassword" class="form-input" placeholder="New Password" required id="new-password-input">
         <!-- Submit button for registration -->
         <button type="submit" class="form-button" id="register-button">Register</button>
     </form>
+
     <!-- Tooltip for login failure -->
     <div class="tooltip" id="login-failed-tooltip">
         <% Boolean loginError = (Boolean) session.getAttribute("loginError");
             if (loginError != null && loginError.booleanValue()) { %>
         <script> alert("Login Failed"); </script>
         <% session.setAttribute("loginError", false);} %>
+    </div>
+
+    <!-- Tooltip for registration failure -->
+    <div class="tooltip" id="registration-failed-tooltip">
+        <% Boolean accountExists = (Boolean) session.getAttribute("accountExists");
+            if (accountExists != null && accountExists.booleanValue()) { %>
+        <script> alert("Username or Password Already Exists"); </script>
+        <% session.setAttribute("accountExists", false); } %>
     </div>
 </div>
 

@@ -31,7 +31,7 @@ public class DbUser extends User {
      * @throws SQLException If a database error occurs during the operation.
      */
 
-    public static boolean addUser(User user) throws SQLException {
+    public static boolean addUserDB(User user) throws SQLException {
         // SQL statements for checking user existence and inserting a new user.
         String sqlCheckExistence = "SELECT * FROM User WHERE username = ? OR password = ?";
         String sqlInsertUser = "INSERT INTO User (username, password, permission) VALUES (?, ?, ?)";

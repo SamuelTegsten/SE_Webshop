@@ -75,6 +75,7 @@ public class AccountServlet extends HttpServlet {
 
                 // If login is successful, set a session attribute to indicate no login error
                 session.setAttribute("loginError", false);
+                session.setAttribute("active-session", true);
 
                 // Redirect the user to a success page (success.jsp)
                 response.sendRedirect("success.jsp");

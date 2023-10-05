@@ -94,9 +94,13 @@
     <!-- Cart action buttons -->
     <div class="cart-buttons">
         <%
+            System.out.println(session.getAttribute("active-session"));
             if (session.getAttribute("active-session") == null || (boolean) session.getAttribute("active-session") == false) {
         %>
-        <button class="login-button">Log In</button>
+            <div>
+                <input type="hidden" name="command" value="loginRedirect">
+                <button class="login-button">Log In</button>
+            </div>
         <% } else { %>
             <div>
                 <input type="hidden" name="command" value="AddOrder">

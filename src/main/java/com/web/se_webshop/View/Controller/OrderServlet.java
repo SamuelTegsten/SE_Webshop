@@ -27,6 +27,9 @@ public class OrderServlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 break;
+            case "loginRedirect":
+                response.sendRedirect("account.jsp");
+                break;
         }
     }
 

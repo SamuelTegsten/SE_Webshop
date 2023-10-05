@@ -1,5 +1,9 @@
 package com.web.se_webshop.BO.Model.AccountLogic;
 
+import java.sql.SQLException;
+
+import static com.web.se_webshop.DB.BDObjects.DbUser.findAccountByDetails;
+
 public class User {
     private String username;
     private String password;
@@ -11,7 +15,9 @@ public class User {
         this.permission = permission;
     }
 
-    // Getters and setters for username, password, and permission
+    public static Permission getUserByAccount(String username, String password) throws SQLException {
+        return findAccountByDetails(username, password);
+    }
     public String getUsername() {
         return username;
     }

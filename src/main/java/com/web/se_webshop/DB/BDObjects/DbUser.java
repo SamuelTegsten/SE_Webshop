@@ -76,4 +76,43 @@ public class DbUser extends User {
         }
         return true; // User successfully added to the database.
     }
+
+    /**
+     * Finds a user account in the database by username and password and returns the user's permission.
+     * @param username The username of the user.
+     * @param password The password of the user.
+     * @return The permission of the user if found, null if the user is not found.
+     * @throws SQLException If a database error occurs during the operation.
+     */
+    public static Permission findAccountByDetails(String username, String password) throws SQLException {
+        String sqlFindUser = "SELECT permission FROM User WHERE username = ? AND password = ?";
+        PreparedStatement pstmt = null;
+        ResultSet resultSet = null;
+
+        try {
+            pstmt = DBConnect.getConnection().prepareStatement(sqlFindUser);
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+            resultSet = pstmt.executeQuery();
+
+            if (resultSet.next()) {
+                // User found, return their permission.
+                String permissionStr = resultSet.getString("permission");
+                return Permission.valueOf(permissionStr);
+            } else {
+                // User not found.
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        } finally {
+            // Close prepared statement and result set to release resources.
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (pstmt != null) {
+                pstmt.close();
+            }
+        }
+    }
 }

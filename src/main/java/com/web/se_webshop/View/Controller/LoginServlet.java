@@ -1,7 +1,9 @@
 package com.web.se_webshop.View.Controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
+import com.web.se_webshop.BO.Model.AccountLogic.Permission;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -9,6 +11,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpSession;
+
+import static com.web.se_webshop.BO.Model.AccountLogic.UserHandler.getUser;
 
 @WebServlet(name = "LoginServlet", value = "/login-servlet")
 public class LoginServlet extends HttpServlet {
@@ -21,40 +25,45 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         HttpSession session = request.getSession();
 
-        // Check if the login is successful by calling the checkLogin method
-        boolean loginSuccessful = checkLogin(username, password);
+        try {
+            Permission userPermission = checkLogin(username, password);
+            if (userPermission != null) {
+                // If login succeeds, print a message to the console
+                System.out.println("Login Successful");
 
-        if (loginSuccessful) {
-            // If login succeeds, print a message to the console
-            System.out.println("Login Successful");
+                // Set the user's role
+                session.setAttribute("userRole", userPermission.toString());
 
-            // If login is successful, set a session attribute to indicate no login error
-            session.setAttribute("loginError", false);
+                // If login is successful, set a session attribute to indicate no login error
+                session.setAttribute("loginError", false);
 
-            // Redirect the user to a success page (success.jsp)
-            response.sendRedirect("success.jsp");
+                // Redirect the user to a success page (success.jsp)
+                response.sendRedirect("success.jsp");
 
-        } else {
-            // If login fails, print a message to the console
-            System.out.println("Login failed");
+            } else {
+                // If login fails, print a message to the console
+                System.out.println("Login failed");
 
-            // Set a session attribute to indicate a login error
-            session.setAttribute("loginError", true);
+                // Set a session attribute to indicate a login error
+                session.setAttribute("loginError", true);
 
-            // Forward the request to an account page (account.jsp)
-            RequestDispatcher dispatcher = request.getRequestDispatcher("account.jsp");
-            dispatcher.forward(request, response);
+                // Forward the request to an account page (account.jsp)
+                RequestDispatcher dispatcher = request.getRequestDispatcher("account.jsp");
+                dispatcher.forward(request, response);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
     // This private method checks the provided username and password for authentication
-    private boolean checkLogin(String username, String password) {
-        // In this example, the username and password are hardcoded for demonstration purposes
-        // You should replace these with your actual authentication logic
-        if ("test".equals(username) && "test".equals(password)) {
-            return true;
+    private Permission checkLogin(String username, String password) throws SQLException {
+        Permission userPermission = getUser(username, password);
+        if(userPermission != null){
+            return userPermission;
+        } else {
+            return null;
         }
-        return false;
     }
 
     // This method is not used in this code, but it's part of the HttpServlet interface

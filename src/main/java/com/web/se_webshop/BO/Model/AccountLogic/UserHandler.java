@@ -1,7 +1,10 @@
 package com.web.se_webshop.BO.Model.AccountLogic;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.web.se_webshop.BO.Model.AccountLogic.User.getUserByAccount;
 
 public class UserHandler {
     private static List<User> userList = new ArrayList<>();
@@ -14,13 +17,8 @@ public class UserHandler {
         return userList;
     }
 
-    public static User getUserByUsername(String username) {
-        for (User user : userList) {
-            if (user.getUsername().equals(username)) {
-                return user;
-            }
-        }
-        return null;
+    public static Permission getUser(String username, String password) throws SQLException {
+       return getUserByAccount(username,password);
     }
 
     public static void removeUser(User user) {

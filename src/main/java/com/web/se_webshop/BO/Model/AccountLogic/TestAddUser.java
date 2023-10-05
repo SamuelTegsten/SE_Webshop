@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class TestAddUser {
     public static void main(String[] args) throws SQLException {
         System.out.println(DBConnect.getConnection());
-        if(DbUser.addUser(new User("Este", "Ma", Permission.ADMIN))){
+        if(DbUser.addUser(new User("Maria", "Ukkonen", Permission.STAFF))){
             System.out.println("USER ADDED");
         } else {
             System.out.println("USERNAME OR PASSWORD ALREADY EXISTS");

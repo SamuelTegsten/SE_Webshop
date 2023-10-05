@@ -31,7 +31,6 @@
     <div class="row">
 
         <!-- The Products are looped here -->
-
         <%
             ArrayList<ItemView> foundItems = (ArrayList<ItemView>) request.getAttribute("found-items");
             if (foundItems != null) {
@@ -47,7 +46,7 @@
                     if (item.getStockNumber() > 0) {
                 %>
                 <div class="stock-info">
-                    <h5>In Stock</h5>
+                    <h5>In Stock  <%= item.getStockNumber() %></h5>
                     <i class="fa fa-check-circle"></i>
                 </div>
                 <%} else {%>

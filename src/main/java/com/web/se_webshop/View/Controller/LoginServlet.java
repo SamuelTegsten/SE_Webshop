@@ -34,6 +34,9 @@ public class LoginServlet extends HttpServlet {
                 // Set the user's role
                 session.setAttribute("userRole", userPermission.toString());
 
+                // Send back the username for display
+                session.setAttribute("userName", username);
+
                 // If login is successful, set a session attribute to indicate no login error
                 session.setAttribute("loginError", false);
 

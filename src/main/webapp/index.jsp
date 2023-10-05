@@ -37,7 +37,8 @@
                         <% if (userRole == null) { %>
                         <li><a href="account.jsp">Account</a></li>
                         <% } else { %>
-                        <li><a href="success.jsp">Account</a></li>
+                        <%String userName = (String) session.getAttribute("userName");%>
+                        <li><a href="success.jsp"><%= userName %></a></li>
                         <% } %>
 
                         <%-- Show the "Orders" tab to Staff and Admin --%>

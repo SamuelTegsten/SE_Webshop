@@ -3,6 +3,8 @@ package com.web.se_webshop.View.Controller;
 import com.web.se_webshop.BO.Model.ItemLogic.ItemHandler;
 import com.web.se_webshop.BO.Model.OrderLogic.OrderHandler;
 import com.web.se_webshop.View.ObjectView.CartDetails;
+import com.web.se_webshop.View.ObjectView.ItemView;
+import com.web.se_webshop.View.ObjectView.OrderView;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -10,6 +12,8 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import static com.web.se_webshop.BO.Model.ItemLogic.ItemHandler.searchItem;
 
 @WebServlet(name = "OrderServlet", value = "/OrderServlet")
 public class OrderServlet extends HttpServlet {
@@ -27,6 +31,8 @@ public class OrderServlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 break;
+            case "getAllOrders":
+                getAllOrders(request, response);
             case "loginRedirect":
                 response.sendRedirect("account.jsp");
                 break;
@@ -43,8 +49,14 @@ public class OrderServlet extends HttpServlet {
             System.out.println(address);
             OrderHandler.addOrder(userName, cart, address);
         }
+    }
 
-
+    private void getAllOrders(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<OrderView> foundOrders;
+        foundOrders = OrderHandler.getAllOrders();
+        request.setAttribute("found-orders", foundOrders);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("orders.jsp");
+        dispatcher.forward(request,response);
     }
 
 }

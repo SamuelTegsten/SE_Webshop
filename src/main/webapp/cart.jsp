@@ -41,7 +41,7 @@
             </thead>
             <tbody>
 
-            <!-- Cart item 1 -->
+            <!-- Cart item -->
             <%
                 ArrayList<CartDetails> cart = (ArrayList<CartDetails>) session.getAttribute("cart");
                 if (cart != null) {

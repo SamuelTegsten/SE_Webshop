@@ -26,7 +26,6 @@ public class DbItem extends Item {
         super(name, picture, category, price, stockNumber);
     }
 
-
     public static Collection searchItemDB(String searchText){
         ArrayList<DbItem> foundItems = new ArrayList<>();
         Connection con = DBConnect.getConnection();
@@ -43,10 +42,8 @@ public class DbItem extends Item {
                         pResultSet.getFloat("price"),
                         pResultSet.getInt("stockNumber")
                 ));
-
             }
             return (ArrayList<DbItem>) foundItems.clone();
-            
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

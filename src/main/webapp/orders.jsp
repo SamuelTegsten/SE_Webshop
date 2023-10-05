@@ -1,3 +1,6 @@
+<%@ page import="com.web.se_webshop.View.ObjectView.OrderView" %>
+<%@ page import="com.web.se_webshop.BO.Model.OrderLogic.OrderHandler" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,29 +38,26 @@
         </thead>
         <tbody>
         <!-- This is where you will dynamically populate the order data rows -->
+        <%
+
+            ArrayList<OrderView> orders = OrderHandler.getAllOrders();
+            if (orders != null) {
+                for (OrderView order : orders) {
+        %>
+
+
+
         <tr>
-            <td>Sample Product 1</td>
-            <td>5</td>
-            <td>John Doe</td>
-            <td>2023-10-02</td>
-            <td>In Progress</td>
+            <td><%=order.getItemName()%></td>
+            <td><%=order.getNumberOfItems()%></td>
+            <td><%=order.getUsername()%></td>
+            <td><%=order.getDate()%></td>
+            <td><%=order.getStatus()%></td>
             <td>
-                <input type="number" min="0" value="0" style="width: 40px;"> <!-- Quantity Input -->
                 <button class="pack-button">Pack Item</button> <!-- "Pack Item" Button -->
             </td>
         </tr>
-        <tr>
-            <td>Sample Product 2</td>
-            <td>3</td>
-            <td>Jane Smith</td>
-            <td>2023-10-03</td>
-            <td>In Progress</td>
-            <td>
-                <input type="number" min="0" value="0" style="width: 40px;">
-                <button class="pack-button">Pack Item</button>
-            </td>
-        </tr>
-        <!-- Add more rows as needed -->
+        <%}}%>
         </tbody>
     </table>
     <div class="add_item">

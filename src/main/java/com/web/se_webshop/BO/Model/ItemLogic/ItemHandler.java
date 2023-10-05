@@ -13,7 +13,7 @@ import static com.web.se_webshop.DB.BDObjects.DbItem.searchItemDB;
 public class ItemHandler {
     private static List<Item> itemList = new ArrayList<>();
     public static boolean addItem(ItemView itemView) throws SQLException {
-        return Item.addItem(itemView);
+        return Item.addItem(new Item(itemView.getName(), itemView.getPicture(), itemView.getCategory(), itemView.getPrice(), itemView.getStockNumber()));
     }
 
     public static ArrayList<ItemView> searchItem(String searchText){

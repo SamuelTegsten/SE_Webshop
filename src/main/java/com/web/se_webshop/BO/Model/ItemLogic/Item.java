@@ -27,8 +27,8 @@ public class Item {
         this.stockNumber = stockNumber;
     }
 
-    static public boolean addItem(ItemView itemView) throws SQLException {
-        return addItemDB(new Item(itemView.getName(), itemView.getPicture(), itemView.getCategory(), itemView.getPrice(), itemView.getStockNumber()));
+    static public boolean addItem(Item item) throws SQLException {
+        return addItemDB(item);
     }
 
     static public Collection searchItem(String searchText){

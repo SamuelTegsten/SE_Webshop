@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.web.se_webshop.View.ObjectView.UserView" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="com.web.se_webshop.BO.Model.AccountLogic.User" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,58 +26,86 @@
 <div class="container">
     <h2>Admin Panel</h2>
 
-    <!-- User Form to Add User -->
+    <%-- Add User Form --%>
     <div class="add_user">
         <h3>Add User</h3>
-        <form>
+        <form action="admin-servlet" method="post">
             <!-- Input fields for adding a user -->
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
+            <input type="hidden" name="action" value="addUser">
+            <input type="text" name="addUserUsername" placeholder="Username" required>
+            <input type="password" name="addUserPassword" placeholder="Password" required>
             <button type="submit">Add</button>
         </form>
+        <!-- Display the action result message -->
+        <p>${requestScope.addUserActionCompleted} ${requestScope.addUserMessage}</p>
     </div>
 
-    <!-- User Form to Remove User -->
+    <%-- Remove User Form --%>
     <div class="remove_user">
         <h3>Remove User</h3>
-        <form>
+        <form action="admin-servlet" method="post">
             <!-- Input fields for removing a user -->
-            <input type="text" placeholder="Username" required>
+            <input type="hidden" name="action" value="removeUser">
+            <input type="text" name="removeUserUsername" placeholder="Username" required>
             <button type="submit">Remove</button>
         </form>
+        <!-- Display the action result message -->
+        <p>${requestScope.removeUserActionCompleted} ${requestScope.removeUserMessage}</p>
     </div>
 
-    <!-- Staff Member Form to Add Staff Member -->
+    <%-- Add Staff Member Form --%>
     <div class="add_staff">
         <h3>Add Staff Member</h3>
-        <form>
+        <form action="admin-servlet" method="post">
             <!-- Input fields for adding a staff member -->
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
+            <input type="hidden" name="action" value="addStaff">
+            <input type="text" name="addStaffUsername" placeholder="Username" required>
+            <input type="password" name="addStaffPassword" placeholder="Password" required>
             <button type="submit">Add</button>
         </form>
+        <!-- Display the action result message -->
+        <p>${requestScope.addStaffActionCompleted} ${requestScope.addStaffMessage}</p>
     </div>
 
-    <!-- Staff Member Form to Remove Staff Member -->
+    <%-- Remove Staff Member Form --%>
     <div class="remove_staff">
         <h3>Remove Staff Member</h3>
-        <form>
+        <form action="admin-servlet" method="post">
             <!-- Input fields for removing a staff member -->
-            <input type="text" placeholder="Username" required>
+            <input type="hidden" name="action" value="removeStaff">
+            <input type="text" name="removeStaffUsername" placeholder="Username" required>
             <button type="submit">Remove</button>
         </form>
+        <!-- Display the action result message -->
+        <p>${requestScope.removeStaffActionCompleted} ${requestScope.removeStaffMessage}</p>
     </div>
 
-    <!-- Admin Form -->
+    <%-- Add Admin Form --%>
     <div class="add_admin">
-        <h3>Admin</h3>
-        <form>
-            <!-- Input fields for adding/removing an admin -->
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
+        <h3>Add Admin</h3>
+        <form action="admin-servlet" method="post">
+            <!-- Input fields for adding an admin -->
+            <input type="hidden" name="action" value="addAdmin">
+            <input type="text" name="addAdminUsername" placeholder="Username" required>
+            <input type="password" name="addAdminPassword" placeholder="Password" required>
             <button type="submit">Add</button>
+        </form>
+        <!-- Display the action result message -->
+        <p>${requestScope.addAdminActionCompleted} ${requestScope.addAdminMessage}</p>
+    </div>
+
+    <%-- Remove Admin Form --%>
+    <div class="remove_admin">
+        <h3>Remove Admin</h3>
+        <form action="admin-servlet" method="post">
+            <!-- Input fields for removing an admin -->
+            <input type="hidden" name="action" value="removeAdmin">
+            <input type="text" name="removeAdminUsername" placeholder="Username" required>
+            <input type="text" name="removeAdminPassword" placeholder="Password" required>
             <button type="submit">Remove</button>
         </form>
+        <!-- Display the action result message -->
+        <p>${requestScope.removeAdminActionCompleted} ${requestScope.removeAdminMessage}</p>
     </div>
 
     <!-- User Table -->
@@ -82,27 +114,35 @@
         <table>
             <thead>
             <tr>
-                <!-- Table headers for user permission and username -->
-                <th>Permission</th>
                 <th>Username</th>
+                <th>Permission</th>
             </tr>
             </thead>
             <tbody>
-            <!-- Table rows for users, staff, and admins -->
+            <%
+                ArrayList<UserView> userList = null;
+                try {
+                    userList = UserView.importAllUsers();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                if (userList != null && userList.size() > 0) {
+                    for (UserView user : userList) {
+            %>
+            <!-- Generate a table row for each user -->
             <tr>
-                <td>User</td>
-                <td>JohnDoe</td>
+                <td><%= user.getUsername() %></td>
+                <td><%= user.getPermission() %></td>
             </tr>
+            <% } } else { %>
+            <p>No Users in Service</p>
             <tr>
-                <td>Staff</td>
-                <td>JaneSmith</td>
+                <td colspan="2">No users found</td>
             </tr>
-            <tr>
-                <td>Admin</td>
-                <td>Admin123</td>
-            </tr>
+            <% } %>
             </tbody>
         </table>
+
     </div>
 </div>
 </body>

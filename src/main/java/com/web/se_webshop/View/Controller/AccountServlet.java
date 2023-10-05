@@ -15,10 +15,18 @@ import jakarta.servlet.http.HttpSession;
 import static com.web.se_webshop.BO.Model.AccountLogic.UserHandler.addUser;
 import static com.web.se_webshop.BO.Model.AccountLogic.UserHandler.getUser;
 
+/**
+ * Handles user login and registration operations via HTTP POST requests.
+ */
 @WebServlet(name = "AccountServlet", value = "/account-servlet")
 public class AccountServlet extends HttpServlet {
 
-    // This method handles HTTP POST requests sent to the /account-servlet URL
+    /**
+     * This method handles HTTP POST requests sent to the /account-servlet URL.
+     *
+     * @param request  The HttpServletRequest object representing the HTTP request.
+     * @param response The HttpServletResponse object representing the HTTP response.
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
 
@@ -42,7 +50,15 @@ public class AccountServlet extends HttpServlet {
         }
     }
 
-    // Method to handle user login
+    /**
+     * Method to handle user login.
+     *
+     * @param request   The HttpServletRequest object representing the HTTP request.
+     * @param response  The HttpServletResponse object representing the HTTP response.
+     * @param session   The HttpSession object for managing user sessions.
+     * @param username  The username provided for login.
+     * @param password  The password provided for login.
+     */
     private void loginUser(HttpServletRequest request, HttpServletResponse response, HttpSession session, String username, String password) {
         try {
             // Attempt to retrieve user permission
@@ -79,11 +95,19 @@ public class AccountServlet extends HttpServlet {
         }
     }
 
-    // Method to handle user registration
+    /**
+     * Method to handle user registration.
+     *
+     * @param request    The HttpServletRequest object representing the HTTP request.
+     * @param response   The HttpServletResponse object representing the HTTP response.
+     * @param session    The HttpSession object for managing user sessions.
+     * @param newUsername The new username provided for registration.
+     * @param newPassword The new password provided for registration.
+     */
     private void registerUser(HttpServletRequest request, HttpServletResponse response, HttpSession session, String newUsername, String newPassword) {
         try {
             // Attempt to add a new user
-            boolean checkUser = addUser(newUsername, newPassword);
+            boolean checkUser = addUser(newUsername, newPassword, Permission.USER);
             if (checkUser) {
                 // If registration is successful, print a message to the console
                 System.out.println("User Registered: " + newUsername);
@@ -116,7 +140,9 @@ public class AccountServlet extends HttpServlet {
         }
     }
 
-    // This method is not used in this code, but it's part of the HttpServlet interface
+    /**
+     * This method is not used in this code, but it's part of the HttpServlet interface.
+     */
     public void destroy() {
         // Perform any cleanup or resource release here, if needed
     }

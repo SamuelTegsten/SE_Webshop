@@ -1,5 +1,7 @@
 package com.web.se_webshop.BO.Model.AccountLogic;
 
+import com.web.se_webshop.BO.Model.AccountLogic.Permission;
+import com.web.se_webshop.BO.Model.AccountLogic.User;
 import com.web.se_webshop.DB.BDObjects.DbUser;
 import com.web.se_webshop.DB.DBManager.DBConnect;
 

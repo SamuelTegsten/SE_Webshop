@@ -1,6 +1,8 @@
 package com.web.se_webshop.BO.Model.OrderLogic;
 
 import com.web.se_webshop.BO.Model.ItemLogic.Item;
+import com.web.se_webshop.BO.Model.OrderLogic.Order;
+import com.web.se_webshop.BO.Model.OrderLogic.OrderStatus;
 import com.web.se_webshop.DB.BDObjects.DbItem;
 import com.web.se_webshop.DB.BDObjects.DbOrder;
 import com.web.se_webshop.DB.DBManager.DBConnect;

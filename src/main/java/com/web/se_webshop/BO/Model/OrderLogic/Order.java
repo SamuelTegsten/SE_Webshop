@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import static com.web.se_webshop.DB.BDObjects.DbItem.searchItemDB;
+import static com.web.se_webshop.DB.BDObjects.DbOrder.packOrderDB;
 
 public class Order {
     private String username;
@@ -39,6 +40,9 @@ public class Order {
 
     static public Collection getAllOrders(){
         return DbOrder.getAllOrders();
+    }
+    public static void packOrder(String orderId) throws SQLException {
+        packOrderDB(orderId);
     }
 
 

@@ -1,6 +1,7 @@
 <%@ page import="com.web.se_webshop.View.ObjectView.OrderView" %>
 <%@ page import="com.web.se_webshop.BO.Model.OrderLogic.OrderHandler" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.web.se_webshop.BO.Model.OrderLogic.OrderStatus" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +55,14 @@
             <td><%=order.getDate()%></td>
             <td><%=order.getStatus()%></td>
             <td>
-                <button class="pack-button">Pack Item</button> <!-- "Pack Item" Button -->
+                <% if(order.getStatus()==OrderStatus.IN_PROGRESS){ %>
+                <form id="search-items-form" action="${pageContext.request.contextPath}/OrderServlet" method="post">
+                        <input type="hidden" name="command" value="pack">
+                        <input type="hidden" name="order-id" value=<%=order.getOrderId()%>>
+                        <button type="submit" class="pack-button">Pack Item</button> <!-- "Pack Item" Button -->
+                </form>
+                <% }%>
+
             </td>
         </tr>
         <%}}%>

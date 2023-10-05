@@ -17,6 +17,33 @@ public class DbOrder extends Order{
         super(username, itemName, numberOfItems, address, orderStatus);
     }
 
+    public static void packOrderDB(String orderId) throws SQLException {
+
+        String sql = "UPDATE `order` SET status = 'SENT' WHERE order_id = ?";
+        PreparedStatement pstmt = null;
+        try {
+            pstmt = DBConnect.getConnection().prepareStatement(sql);
+            DBConnect.getConnection().setAutoCommit(false);
+
+            pstmt.setString(1, orderId);
+
+            pstmt.executeUpdate();
+
+
+            DBConnect.getConnection().commit();
+
+        } catch (SQLException e) {
+
+            DBConnect.getConnection().rollback();
+            throw new SQLException(e);
+        } finally {
+
+            if (pstmt != null) {
+                pstmt.close();
+            }
+        }
+
+    }
 
 
 

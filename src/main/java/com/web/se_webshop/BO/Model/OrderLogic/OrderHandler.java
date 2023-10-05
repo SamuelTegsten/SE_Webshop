@@ -24,6 +24,10 @@ public class OrderHandler {
         return success;
     }
 
+    public static void packOrder(String orderId) throws SQLException {
+        Order.packOrder(orderId);
+    }
+
     public static ArrayList<OrderView> getAllOrders(){
         ArrayList<OrderView> tempOrderView = new ArrayList<>();
         Collection tempDbOrder = Order.getAllOrders();

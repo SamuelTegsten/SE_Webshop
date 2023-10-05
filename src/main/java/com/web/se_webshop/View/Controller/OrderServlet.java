@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static com.web.se_webshop.BO.Model.ItemLogic.ItemHandler.searchItem;
+import static com.web.se_webshop.BO.Model.OrderLogic.Order.packOrder;
 
 @WebServlet(name = "OrderServlet", value = "/OrderServlet")
 public class OrderServlet extends HttpServlet {
@@ -36,7 +37,15 @@ public class OrderServlet extends HttpServlet {
             case "loginRedirect":
                 response.sendRedirect("account.jsp");
                 break;
+            case "pack":
+                try {
+                    OrderHandler.packOrder(request.getParameter("order-id"));
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
         }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("orders.jsp");
+        dispatcher.forward(request,response);
     }
 
 
@@ -55,8 +64,7 @@ public class OrderServlet extends HttpServlet {
         ArrayList<OrderView> foundOrders;
         foundOrders = OrderHandler.getAllOrders();
         request.setAttribute("found-orders", foundOrders);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("orders.jsp");
-        dispatcher.forward(request,response);
+
     }
 
 }

@@ -59,9 +59,7 @@
                 </td>
                 <td class="quantity">
                     <!-- Quantity control buttons -->
-                    <button class="decrease">-</button>
                     <input type="number" name="quantity" value="<%=cartDetail.getNumberOfItems()%>" min="1">
-                    <button class="increase">+</button>
                 </td>
             </tr>
 

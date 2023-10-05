@@ -57,7 +57,7 @@
                 </div>
                 <% }%>
             </div>
-            <p>price:-</p>
+            <p>price: <%= item.getPrice()%></p>
             <div class="add-to-cart-container">
                 <form action="AddToCartServlet" method="post">
                     <select name="quantity" class="quantity-select">

@@ -5,6 +5,8 @@ import com.web.se_webshop.View.ObjectView.ItemView;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 import static com.web.se_webshop.DB.BDObjects.DbItem.addItemDB;
 import static com.web.se_webshop.DB.BDObjects.DbItem.searchItemDB;
@@ -29,13 +31,8 @@ public class Item {
         return addItemDB(new Item(itemView.getName(), itemView.getPicture(), itemView.getCategory(), itemView.getPrice(), itemView.getStockNumber()));
     }
 
-    static public ArrayList<ItemView> searchItem(String searchText){
-        ArrayList<ItemView> tempItemView = new ArrayList<>();
-        ArrayList<DbItem> tempDbItem = searchItemDB(searchText);
-        for(DbItem item : tempDbItem){
-            tempItemView.add(new ItemView(item.getName(), item.getPicture(), item.getCategory(), item.getPrice(), item.getStockNumber()));
-        }
-        return tempItemView;
+    static public Collection searchItem(String searchText){
+        return searchItemDB(searchText);
     }
 
     public String getPicture() {

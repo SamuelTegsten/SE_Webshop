@@ -4,7 +4,11 @@ import com.web.se_webshop.View.ObjectView.ItemView;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+
+import static com.web.se_webshop.DB.BDObjects.DbItem.searchItemDB;
 
 public class ItemHandler {
     private static List<Item> itemList = new ArrayList<>();
@@ -13,7 +17,13 @@ public class ItemHandler {
     }
 
     public static ArrayList<ItemView> searchItem(String searchText){
-        return Item.searchItem(searchText);
+        ArrayList<ItemView> tempItemView = new ArrayList<>();
+        Collection tempDbItem = Item.searchItem(searchText);
+        for(Iterator it = tempDbItem.iterator(); it.hasNext();){
+            Item item = (Item)it.next();
+            tempItemView.add(new ItemView(item.getName(), item.getPicture(), item.getCategory(), item.getPrice(), item.getStockNumber()));
+        }
+        return tempItemView;
     }
     public static List<Item> getAllItems() {
         return itemList;

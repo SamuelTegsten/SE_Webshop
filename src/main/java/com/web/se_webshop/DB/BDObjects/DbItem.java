@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * This class extends the Item class and provides functionality for executing CRUD operations on the database
@@ -26,7 +27,7 @@ public class DbItem extends Item {
     }
 
 
-    public static ArrayList<DbItem> searchItemDB(String searchText){
+    public static Collection searchItemDB(String searchText){
         ArrayList<DbItem> foundItems = new ArrayList<>();
         Connection con = DBConnect.getConnection();
         String sql = "SELECT * FROM item WHERE name LIKE ?";

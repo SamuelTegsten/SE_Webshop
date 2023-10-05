@@ -14,16 +14,16 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         // Retrieve username and password from the request parameters
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = request.getParameter("newUsername");
+        String password = request.getParameter("newPassword");
+        System.out.println(username);
+        System.out.println(password);
 
         // Check if the username and password already exist (dummy implementation)
-        boolean usernameExists = checkUsernameExists(username);
-        boolean passwordExists = checkPasswordExists(password);
+        boolean accountExists = checkAccountExists(username, password);
 
         // Set attributes in the request to indicate whether username and password exist
-        request.setAttribute("usernameExists", usernameExists);
-        request.setAttribute("passwordExists", passwordExists);
+        request.setAttribute("accountExists", accountExists);
 
         // Forward the request to an account page (account.jsp)
         RequestDispatcher dispatcher = request.getRequestDispatcher("account.jsp");
@@ -31,16 +31,9 @@ public class RegisterServlet extends HttpServlet {
     }
 
     // Dummy method to check if a username already exists (replace with real logic)
-    private boolean checkUsernameExists(String username) {
+    private boolean checkAccountExists(String username, String password) {
         // Replace this with actual logic to check if the username exists in your system
         // Return true if the username exists, otherwise return false
-        return false;
-    }
-
-    // Dummy method to check if a password already exists (replace with real logic)
-    private boolean checkPasswordExists(String password) {
-        // Replace this with actual logic to check if the password exists in your system
-        // Return true if the password exists, otherwise return false
         return false;
     }
 

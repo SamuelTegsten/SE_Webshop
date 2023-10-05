@@ -40,7 +40,10 @@
     </form>
     <!-- Tooltip for login failure -->
     <div class="tooltip" id="login-failed-tooltip">
-        Login Failed
+        <% Boolean loginError = (Boolean) session.getAttribute("loginError");
+            if (loginError != null && loginError.booleanValue()) { %>
+        <script> alert("Login Failed"); </script>
+        <% session.setAttribute("loginError", false);} %>
     </div>
 </div>
 

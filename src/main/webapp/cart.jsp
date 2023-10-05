@@ -1,3 +1,6 @@
+<%@ page import="com.web.se_webshop.View.ObjectView.CartDetails" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.web.se_webshop.View.ObjectView.ItemView" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,48 +40,50 @@
             <tbody>
 
             <!-- Cart item 1 -->
+            <%
+                ArrayList<CartDetails> cart = (ArrayList<CartDetails>) session.getAttribute("cart");
+                if(cart!= null){
+                    for (CartDetails cartDetail: cart){
+                        ItemView item = cartDetail.getItem();
+
+            %>
             <tr>
-                <td><img src="Style/Pictures/knife1.png" alt="Item Image" width="50px" height="50px"></td>
-                <td>Product 1</td>
-                <td>$10.00</td>
-                <td>Category A</td>
+                <td><img src=<%=item.getPicture()%> width="50px" height="50px"></td>
+                <td><%=item.getName()%></td>
+                <td>kr <%=item.getPrice()%></td>
+                <td><%=item.getCategory()%></td>
                 <td class="quantity">
                     <!-- Quantity control buttons -->
                     <button class="decrease">-</button>
-                    <input type="number" name="quantity" value="1" min="1">
+                    <input type="number" name="quantity" value="<%=cartDetail.getNumberOfItems()%>" min="1">
                     <button class="increase">+</button>
                 </td>
                 <td><input type="text" id="static_textarea_1" name="static_textarea"></td>
             </tr>
 
-            <!-- Cart item 2 -->
-            <tr>
-                <td><img src="Style/Pictures/tent1.png" alt="Item Image" width="50px" height="50px"></td>
-                <td>Product 2</td>
-                <td>$20.00</td>
-                <td>Category B</td>
-                <td class="quantity">
-                    <!-- Quantity control buttons -->
-                    <button class="decrease">-</button>
-                    <input type="number" name="quantity" value="1" min="1">
-                    <button class="increase">+</button>
-                </td>
-                <td><input type="text" id="static_textarea_2" name="static_textarea"></td>
-            </tr>
+            <%} }%>
             </tbody>
         </table>
-
-        <!-- Total amount display -->
         <div class="total-amount">
-            <label for="total">Total Amount:</label>
-            <input type="text" id="total" name="total" readonly>
+            <label >Total Amount:</label>
+            <% if(cart!=null){%>
+            <%=CartDetails.getTotalAmount(cart)%> kr
+            <%}else{%>
+            0 kr
+            <%}%>
         </div>
     </div>
 
     <!-- Cart action buttons -->
     <div class="cart-buttons">
-        <button class="purchase-button">Purchase</button>
+        <%
+            if(session.getAttribute("active-session")==null || (boolean) session.getAttribute("active-session") == false){
+        %>
         <button class="login-button">Log In</button>
+        <% }else { %>
+            <button class="purchase-button">Purchase</button>
+        <% }%>
+
     </div>
 </div>
 </body>

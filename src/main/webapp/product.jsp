@@ -1,5 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.web.se_webshop.View.ObjectView.ItemView" %>
+<%@ page import="com.web.se_webshop.View.ObjectView.CartDetails" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +34,12 @@
         <!-- The Products are looped here -->
 
         <%
+            ArrayList<CartDetails> cart = (ArrayList<CartDetails>) session.getAttribute("cart");
+            if (cart == null) {
+                cart = new ArrayList<CartDetails>();
+                session.setAttribute("cart", cart);
+            }
+
             ArrayList<ItemView> foundItems = (ArrayList<ItemView>) request.getAttribute("found-items");
             if (foundItems != null) {
                 for (ItemView item : foundItems) {
@@ -67,7 +74,7 @@
                         </option>
                         <% } %>
                     </select>
-                    <input type="hidden" name="productId" value="1">
+                    <input type="hidden" name="item_name" value= <%=item.getName()%>>
                     <button type="submit" class="add-to-cart">Add to Cart</button>
                 </form>
             </div>

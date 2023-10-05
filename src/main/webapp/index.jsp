@@ -33,7 +33,12 @@
                     <ul>
                         <li><a href="index.jsp">Home</a></li>
                         <li><a href="product.jsp">Products</a></li>
+
+                        <% if (userRole == null) { %>
                         <li><a href="account.jsp">Account</a></li>
+                        <% } else { %>
+                        <li><a href="success.jsp">Account</a></li>
+                        <% } %>
 
                         <%-- Show the "Orders" tab to Staff and Admin --%>
                         <% if ("STAFF".equals(userRole) || "ADMIN".equals(userRole)) { %>

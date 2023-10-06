@@ -34,9 +34,6 @@ public class OrderServlet extends HttpServlet {
             case "getAllOrders":
                 getAllOrders(request, response);
                 break; // Added break here to avoid falling through to the next case
-            case "loginRedirect":
-                response.sendRedirect("account.jsp");
-                break; // Return after sending a redirect
             case "pack":
                 try {
                     OrderHandler.packOrder(request.getParameter("order-id"));
@@ -70,7 +67,6 @@ public class OrderServlet extends HttpServlet {
         ArrayList<OrderView> foundOrders;
         foundOrders = OrderHandler.getAllOrders();
         request.setAttribute("found-orders", foundOrders);
-
     }
 
 }

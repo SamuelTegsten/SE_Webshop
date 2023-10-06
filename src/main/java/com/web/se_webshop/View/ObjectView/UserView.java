@@ -12,7 +12,7 @@ import static com.web.se_webshop.BO.Model.AccountLogic.User.getAllUsers;
 /**
  * Represents a view of user data, providing methods to import and manipulate user information.
  */
-public class UserView {
+public class UserView implements Comparable<UserView>{
 
     // Fields to store username and permission for a UserView object
     private String username;
@@ -24,29 +24,9 @@ public class UserView {
      * @param username   The username of the user.
      * @param permission The permission level of the user.
      */
-    protected UserView(String username, Permission permission) {
+    public UserView(String username, Permission permission) {
         this.username = username;
         this.permission = permission;
-    }
-
-    /**
-     * Static method to import all users as UserView objects from the database.
-     *
-     * @return An ArrayList of UserView objects representing all users.
-     * @throws SQLException If there is an issue with database access.
-     */
-    public static ArrayList<UserView> importAllUsers() throws SQLException {
-        // Retrieve a collection of User objects from the database
-        Collection<User> userList = getAllUsers();
-
-        // Initialize an ArrayList to store UserView objects
-        ArrayList<UserView> listOfAllUserView = new ArrayList<>(userList.size());
-
-        // Convert each User object to a UserView object and add it to the list
-        for (User user : userList) {
-            listOfAllUserView.add(new UserView(user.getUsername(), user.getPermission()));
-        }
-        return listOfAllUserView;
     }
 
     /**
@@ -90,6 +70,25 @@ public class UserView {
      *
      * @return A string representation of the UserView object.
      */
+
+    public int getPermissionLevel() {
+        // Add logic to determine the permission level based on your data
+        // For example, assuming permission is stored as a string:
+        if ("ADMIN".equals(permission)) {
+            return 1;
+        } else if ("STAFF".equals(permission)) {
+            return 2;
+        } else {
+            return 3; // USER or other permissions
+        }
+    }
+
+    @Override
+    public int compareTo(UserView otherUser) {
+        // Compare users based on their permission levels
+        return Integer.compare(this.getPermissionLevel(), otherUser.getPermissionLevel());
+    }
+
     @Override
     public String toString() {
         return "UserView{" +

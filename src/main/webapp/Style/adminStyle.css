@@ -25,6 +25,7 @@ h2 {
 .add_admin,
 .remove_staff,
 .remove_user,
+.remove_admin,
 .user_table {
     margin-bottom: 20px;
 }
@@ -55,8 +56,20 @@ form button {
     cursor: pointer;
 }
 
+/* Add space between User Table and elements above */
+.user_table h3 {
+    margin-top: 30px;
+}
+
+/* Center the "Load Users" button */
+.user_table button {
+    display: block;
+    margin: 0 auto;
+}
+
 /* Style for tables */
 table {
+    margin-top: 30px;
     width: 100%;
     border-collapse: collapse;
 }

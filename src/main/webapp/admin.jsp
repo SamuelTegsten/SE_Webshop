@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.web.se_webshop.View.ObjectView.UserView" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="com.web.se_webshop.BO.Model.AccountLogic.User" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,6 +110,12 @@
     <!-- User Table -->
     <div class="user_table">
         <h3>User Table</h3>
+        <!-- Center the "Load Users" button -->
+        <div style="text-align: center;">
+            <form action="user-table-servlet" method="GET">
+                <button type="submit">Load Users</button>
+            </form>
+        </div>
         <table>
             <thead>
             <tr>
@@ -119,13 +124,7 @@
             </tr>
             </thead>
             <tbody>
-            <%
-                ArrayList<UserView> userList = null;
-                try {
-                    userList = UserView.importAllUsers();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
+            <% ArrayList<UserView> userList = (ArrayList<UserView>) request.getAttribute("userList");
                 if (userList != null && userList.size() > 0) {
                     for (UserView user : userList) {
             %>
@@ -135,14 +134,12 @@
                 <td><%= user.getPermission() %></td>
             </tr>
             <% } } else { %>
-            <p>No Users in Service</p>
             <tr>
                 <td colspan="2">No users found</td>
             </tr>
             <% } %>
             </tbody>
         </table>
-
     </div>
 </div>
 </body>

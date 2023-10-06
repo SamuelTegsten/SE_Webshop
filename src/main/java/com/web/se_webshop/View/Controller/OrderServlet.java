@@ -26,30 +26,34 @@ public class OrderServlet extends HttpServlet {
         String command = request.getParameter("command");
         System.out.println(command);
 
-
         switch (command) {
             case "AddOrder":
                 try {
                     addOrder(request, response);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("success.jsp");
+                    dispatcher.forward(request, response);
+                    return;
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
-                break;
             case "getAllOrders":
                 getAllOrders(request, response);
-            case "loginRedirect":
-                response.sendRedirect("account.jsp");
-                break;
+                break; // Added break here to avoid falling through to the next case
             case "pack":
                 try {
                     OrderHandler.packOrder(request.getParameter("order-id"));
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
+                break;
+            default:
+                // Handle any other cases here if needed
+                break;
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("orders.jsp");
-        dispatcher.forward(request,response);
+        dispatcher.forward(request, response);
     }
+
 
 
     private void addOrder(HttpServletRequest request, HttpServletResponse response) throws SQLException {
@@ -67,7 +71,6 @@ public class OrderServlet extends HttpServlet {
         ArrayList<OrderView> foundOrders;
         foundOrders = OrderHandler.getAllOrders();
         request.setAttribute("found-orders", foundOrders);
-
     }
     public static ArrayList<OrderView> getAllOrders(){
         return OrderHandler.getAllOrders();

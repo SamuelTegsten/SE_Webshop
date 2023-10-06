@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import static com.web.se_webshop.BO.Model.ItemLogic.ItemHandler.*;
 
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
@@ -46,8 +47,15 @@ public class ItemServlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 break;
+            case "DISPLAY":
+                displayAllItems(request, response);
+                break;
+            default:
+                // Handle other cases or display an error message if needed.
+                break;
         }
     }
+
 
     private void updateItem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         String pictureSelected = request.getPart("item-image").getSubmittedFileName();
@@ -81,6 +89,15 @@ public class ItemServlet extends HttpServlet {
 
 
     private void searchItem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    private void displayAllItems(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<ItemView> allItems = getAllItems();
+        request.setAttribute("display-items", allItems);
+        request.getRequestDispatcher("product.jsp").forward(request, response);
+    }
+    
+    private void searchItemServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         ArrayList<ItemView> foundItems;
         String searchText = request.getParameter("search_text");
         foundItems = ItemHandler.searchItem(searchText);

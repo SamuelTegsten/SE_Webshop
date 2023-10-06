@@ -37,7 +37,7 @@ public class AccountServlet extends HttpServlet {
         // Check if username and password are provided in the request
         if (username != null && password != null) {
             // Attempt to log in the user
-            loginUser(request, response, session, username, password);
+            loginUserServlet(request, response, session, username, password);
         }
 
         String newUsername = request.getParameter("newUsername");
@@ -46,7 +46,7 @@ public class AccountServlet extends HttpServlet {
         // Check if new username and password are provided in the request
         if (newUsername != null && newPassword != null) {
             // Attempt to register a new user
-            registerUser(request, response, session, newUsername, newPassword);
+            registerUserServlet(request, response, session, newUsername, newPassword);
         }
     }
 
@@ -59,7 +59,7 @@ public class AccountServlet extends HttpServlet {
      * @param username  The username provided for login.
      * @param password  The password provided for login.
      */
-    private void loginUser(HttpServletRequest request, HttpServletResponse response, HttpSession session, String username, String password) {
+    private void loginUserServlet(HttpServletRequest request, HttpServletResponse response, HttpSession session, String username, String password) {
         try {
             // Attempt to retrieve user permission
             Permission userPermission = getUser(username, password);
@@ -105,7 +105,7 @@ public class AccountServlet extends HttpServlet {
      * @param newUsername The new username provided for registration.
      * @param newPassword The new password provided for registration.
      */
-    private void registerUser(HttpServletRequest request, HttpServletResponse response, HttpSession session, String newUsername, String newPassword) {
+    private void registerUserServlet(HttpServletRequest request, HttpServletResponse response, HttpSession session, String newUsername, String newPassword) {
         try {
             // Attempt to add a new user
             boolean checkUser = addUser(newUsername, newPassword, Permission.USER);

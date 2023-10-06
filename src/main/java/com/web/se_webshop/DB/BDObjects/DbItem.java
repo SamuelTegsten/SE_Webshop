@@ -138,5 +138,31 @@ public class DbItem extends Item {
         }
     }
 
+    /**
+     * Retrieves all items from the database.
+     *
+     * @return A collection of all items in the database.
+     */
+    public static Collection<Item> getAllItemDB() {
+        ArrayList<Item> allItems = new ArrayList<>();
+        Connection con = DBConnect.getConnection();
+        String sql = "SELECT * FROM item";
+        try (PreparedStatement pstm = con.prepareStatement(sql)) {
+            ResultSet pResultSet = pstm.executeQuery();
+            while (pResultSet.next()) {
+                allItems.add(new DbItem(
+                        pResultSet.getString("name"),
+                        pResultSet.getString("picture"),
+                        pResultSet.getString("category"),
+                        pResultSet.getFloat("price"),
+                        pResultSet.getInt("stockNumber")
+                ));
+            }
+            return allItems;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
 
 }

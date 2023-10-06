@@ -2,6 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.web.se_webshop.View.ObjectView.ItemView" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,8 +107,7 @@
             if (session.getAttribute("active-session") == null || (boolean) session.getAttribute("active-session") == false) {
         %>
             <div>
-                <input type="hidden" name="command" value="loginRedirect">
-                <button class="login-button">Log In</button>
+                <a href="account.jsp" class="purchase-button">Log In</a>
             </div>
         <% } else { %>
             <div>

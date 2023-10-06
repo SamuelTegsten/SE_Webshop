@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.web.se_webshop.BO.Model.ItemLogic.Item.getAllItem;
 import static com.web.se_webshop.DB.BDObjects.DbItem.searchItemDB;
 
 public class ItemHandler {
@@ -25,8 +26,14 @@ public class ItemHandler {
         }
         return tempItemView;
     }
-    public static List<Item> getAllItems() {
-        return itemList;
+    public static ArrayList<ItemView> getAllItems() {
+        ArrayList<ItemView> tempItemView = new ArrayList<>();
+        Collection tempDbItem = getAllItem();
+        for(Iterator it = tempDbItem.iterator(); it.hasNext();){
+            Item item = (Item)it.next();
+            tempItemView.add(new ItemView(item.getName(), item.getPicture(), item.getCategory(), item.getPrice(), item.getStockNumber()));
+        }
+        return tempItemView;
     }
     public static Item getItemByName(String itemName) {
         for (Item item : itemList) {

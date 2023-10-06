@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import static com.web.se_webshop.DB.BDObjects.DbItem.addItemDB;
-import static com.web.se_webshop.DB.BDObjects.DbItem.searchItemDB;
+import static com.web.se_webshop.DB.BDObjects.DbItem.*;
 
 public class Item {
     private String name;
@@ -45,6 +44,9 @@ public class Item {
 
     public static boolean updateCategory(String itemName, String newCategory) throws SQLException {
         return DbItem.updateCategoryDb(itemName, newCategory);
+
+    static public Collection getAllItem(){
+        return getAllItemDB();
 
     }
 

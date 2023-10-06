@@ -1,5 +1,7 @@
 package com.web.se_webshop.BO.Model.AccountLogic;
 
+import com.web.se_webshop.View.ObjectView.UserView;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -50,14 +52,23 @@ public class UserHandler {
     }
 
     /**
-     * Retrieves a collection of all users.
+     * Static method to import all users as UserView objects from the database.
      *
-     * @return A collection of User objects representing all users.
+     * @return An ArrayList of UserView objects representing all users.
      * @throws SQLException If there is an issue with database access.
      */
-    public static Collection<User> getUsers() throws SQLException {
-        System.out.println(getAllUsers());
-        return getAllUsers();
+    public static ArrayList<UserView> getUsers() throws SQLException {
+            // Retrieve a collection of User objects from the database
+            Collection<User> userList = getAllUsers();
+
+            // Initialize an ArrayList to store UserView objects
+            ArrayList<UserView> listOfAllUserView = new ArrayList<>(userList.size());
+
+            // Convert each User object to a UserView object and add it to the list
+            for (User user : userList) {
+                listOfAllUserView.add(new UserView(user.getUsername(), user.getPermission()));
+            }
+            return listOfAllUserView;
     }
 
     /**

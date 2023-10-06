@@ -36,7 +36,7 @@ public class OrderServlet extends HttpServlet {
                 break; // Added break here to avoid falling through to the next case
             case "loginRedirect":
                 response.sendRedirect("account.jsp");
-                return; // Return after sending a redirect
+                break; // Return after sending a redirect
             case "pack":
                 try {
                     OrderHandler.packOrder(request.getParameter("order-id"));

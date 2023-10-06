@@ -1,8 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-    String userName = (String) session.getAttribute("userName");
-    String userRole = (String) session.getAttribute("userRole");
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,23 +23,42 @@
 <jsp:include page="navbar.jsp"/>
 
 <div class="order-table">
-    <h2><%= userName %> Account Screen</h2>
+    <h2>#Name# Order Status</h2>
     <table>
         <thead>
         <tr>
             <th>Name</th>
-            <th>Permission</th>
+            <th>Amount</th>
+            <th>Date Ordered</th>
+            <th>Order Status</th>
+            <th>Price</th>
         </tr>
         </thead>
         <tbody>
         <!-- This is where you will dynamically populate the order data rows -->
         <tr>
-            <td><%= userName %></td>
-            <td><%= userRole %></td>
+            <td>Sample Product 1</td>
+            <td>5</td>
+            <td>2023-10-02</td>
+            <td>Sent</td>
+            <td>59,99:-</td>
         </tr>
+        <tr>
+            <td>Sample Product 2</td>
+            <td>3</td>
+            <td>2023-10-03</td>
+            <td>In Progress</td>
+            <td>59,99:-</td>
+        </tr>
+        <!-- Add more rows as needed -->
         </tbody>
     </table>
-    <a href="logout.jsp" class="purchase-button">Log Out</a>
+    <!-- Total amount display -->
+    <div class="total-amount">
+        <label for="total">Total Amount:</label>
+        <input type="text" id="total" name="total" readonly>
+    </div>
+</div>
 </div>
 </body>
 </html>

@@ -1,10 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.Arrays" %>
-<%@ page import="com.web.se_webshop.View.ObjectView.CartDetails" %>
-<%@ page import="com.web.se_webshop.View.ObjectView.ItemView" %>
-<%@ page import="javax.swing.plaf.basic.BasicComboBoxUI" %>
-<%@ page import="com.web.se_webshop.BO.Model.ItemLogic.ItemHandler" %>
-<%
+<%@ page import="java.util.Arrays" %><%
     String userRole = (String) session.getAttribute("userRole");
 %>
 
@@ -42,12 +37,10 @@
 
                         <% if (userRole == null) { %>
                         <li><a href="account.jsp">Account</a></li>
-                        <% } else {
-                            String userName = (String) session.getAttribute("userName");
-                        %>
+                        <% } else { %>
+                        <%String userName = (String) session.getAttribute("userName");%>
                         <li><a href="success.jsp"><%= userName %></a></li>
                         <% } %>
-
 
                         <%-- Show the "Orders" tab to Staff and Admin --%>
                         <% if ("STAFF".equals(userRole) || "ADMIN".equals(userRole)) { %>
@@ -88,37 +81,71 @@
 <div class="small-container">
     <h2 class="title">Featured Products</h2>
     <div class="row">
-        <%
-            ArrayList<ItemView> itemsToDisplay = ItemHandler.getAllItems();
-
-            if (itemsToDisplay != null && !itemsToDisplay.isEmpty()) {
-                for (int i = 0; i < 4 && i < itemsToDisplay.size(); i++) {
-                    ItemView item = itemsToDisplay.get(i);
-        %>
-        <!-- Product <%= i+1 %> -->
+        <!-- Product 1 -->
         <div class="col-4">
-            <img src="<%= item.getPicture() %>" width="250px" height="250px">
-            <h4><%= item.getName() %></h4>
+            <img src="Style/Pictures/tent1.png">
+            <h4>Name</h4>
             <div class="stock">
-                <%
-                    if (item.getStockNumber() > 0) {
-                %>
                 <div class="stock-info">
-                    <h5>In Stock  <%= item.getStockNumber() %></h5>
+                    <h5>In Stock</h5>
                     <i class="fa fa-check-circle"></i>
                 </div>
-                <%} else {%>
                 <div class="stock-info-1">
                     <h5>Out of Stock</h5>
                     <i class="fa fa-times-circle"></i>
                 </div>
-                <% }%>
             </div>
-            <p>Price: <%= item.getPrice() %></p>
+            <p>Price:-</p>
         </div>
-        <% }} %>
+        <!-- Product 2 -->
+        <div class="col-4">
+            <img src="Style/Pictures/knife1.png">
+            <h4>Name</h4>
+            <div class="stock">
+                <div class="stock-info">
+                    <h5>In Stock</h5>
+                    <i class="fa fa-check-circle"></i>
+                </div>
+                <div class="stock-info-1">
+                    <h5>Out of Stock</h5>
+                    <i class="fa fa-times-circle"></i>
+                </div>
+            </div>
+            <p>Price:-</p>
+        </div>
+        <!-- Product 3 -->
+        <div class="col-4">
+            <img src="Style/Pictures/binoculars1.png">
+            <h4>Name</h4>
+            <div class="stock">
+                <div class="stock-info">
+                    <h5>In Stock</h5>
+                    <i class="fa fa-check-circle"></i>
+                </div>
+                <div class="stock-info-1">
+                    <h5>Out of Stock</h5>
+                    <i class="fa fa-times-circle"></i>
+                </div>
+            </div>
+            <p>Price:-</p>
+        </div>
+        <!-- Product 4 -->
+        <div class="col-4">
+            <img src="Style/Pictures/torchlight1.png">
+            <h4>Name</h4>
+            <div class="stock">
+                <div class="stock-info">
+                    <h5>In Stock</h5>
+                    <i class="fa fa-check-circle"></i>
+                </div>
+                <div class="stock-info-1">
+                    <h5>Out of Stock</h5>
+                    <i class="fa fa-times-circle"></i>
+                </div>
+            </div>
+            <p>Price:-</p>
+        </div>
     </div>
 </div>
 </body>
 </html>
-

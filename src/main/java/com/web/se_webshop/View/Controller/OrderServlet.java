@@ -27,10 +27,12 @@ public class OrderServlet extends HttpServlet {
             case "AddOrder":
                 try {
                     addOrder(request, response);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("success.jsp");
+                    dispatcher.forward(request, response);
+                    return;
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
-                break;
             case "getAllOrders":
                 getAllOrders(request, response);
                 break; // Added break here to avoid falling through to the next case
@@ -45,7 +47,6 @@ public class OrderServlet extends HttpServlet {
                 // Handle any other cases here if needed
                 break;
         }
-
         RequestDispatcher dispatcher = request.getRequestDispatcher("orders.jsp");
         dispatcher.forward(request, response);
     }

@@ -3,10 +3,6 @@
 <%@ page import="com.web.se_webshop.View.ObjectView.ItemView" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<%
-    String userRole = (String) session.getAttribute("userRole");
-%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

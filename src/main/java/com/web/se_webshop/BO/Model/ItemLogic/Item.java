@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import static com.web.se_webshop.DB.BDObjects.DbItem.addItemDB;
-import static com.web.se_webshop.DB.BDObjects.DbItem.searchItemDB;
+import static com.web.se_webshop.DB.BDObjects.DbItem.*;
 
 public class Item {
     private String name;
@@ -33,6 +32,10 @@ public class Item {
 
     static public Collection searchItem(String searchText){
         return searchItemDB(searchText);
+    }
+
+    static public Collection getAllItem(){
+        return getAllItemDB();
     }
 
     public String getPicture() {

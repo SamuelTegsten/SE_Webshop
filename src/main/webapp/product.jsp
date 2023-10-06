@@ -66,6 +66,7 @@
             <p>price: <%= item.getPrice()%></p>
             <div class="add-to-cart-container">
                 <form action="AddToCartServlet" method="post">
+                    <input type="hidden" name="command" value="addToCart">
                     <select name="quantity" class="quantity-select">
                         <option
                         <% int stockNumber = item.getStockNumber();

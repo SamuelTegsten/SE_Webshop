@@ -1,6 +1,7 @@
 package com.web.se_webshop.View.Controller;
 
 import com.web.se_webshop.BO.Model.ItemLogic.ItemHandler;
+import com.web.se_webshop.BO.Model.OrderLogic.Order;
 import com.web.se_webshop.BO.Model.OrderLogic.OrderHandler;
 import com.web.se_webshop.View.ObjectView.CartDetails;
 import com.web.se_webshop.View.ObjectView.ItemView;
@@ -12,6 +13,8 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 import static com.web.se_webshop.BO.Model.ItemLogic.ItemHandler.searchItem;
 import static com.web.se_webshop.BO.Model.OrderLogic.Order.packOrder;
@@ -66,5 +69,7 @@ public class OrderServlet extends HttpServlet {
         request.setAttribute("found-orders", foundOrders);
 
     }
-
+    public static ArrayList<OrderView> getAllOrders(){
+        return OrderHandler.getAllOrders();
+    }
 }

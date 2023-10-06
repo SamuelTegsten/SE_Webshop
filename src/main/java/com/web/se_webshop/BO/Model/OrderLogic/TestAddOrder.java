@@ -8,12 +8,15 @@ import com.web.se_webshop.DB.BDObjects.DbOrder;
 import com.web.se_webshop.DB.DBManager.DBConnect;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class TestAddOrder {
     public static void main(String[] args) throws SQLException {
+        ArrayList<Order> orders= new ArrayList();
+        orders.add(new Order("esteban", "Jacket", 3, "söder 123", OrderStatus.SENT));
         DBConnect.getConnection();
         Date currentDate = new Date();
-        //DbOrder.addOrderDB(new Order("esteban", "knife", 3, "söder 123", OrderStatus.SENT));
+        DbOrder.addOrderDB(orders);
     }
 }

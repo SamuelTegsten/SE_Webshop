@@ -31,8 +31,21 @@ public class Item {
         return addItemDB(item);
     }
 
+    public static boolean removeItem(String itemName) throws SQLException {
+        return DbItem.removeItem(itemName);
+    }
+
     static public Collection searchItem(String searchText){
         return searchItemDB(searchText);
+    }
+
+    public static boolean updatePicture(String itemName, String newPicture) throws SQLException {
+        return DbItem.updatePictureDb(itemName, newPicture);
+    }
+
+    public static boolean updateCategory(String itemName, String newCategory) throws SQLException {
+        return DbItem.updateCategoryDb(itemName, newCategory);
+
     }
 
     public String getPicture() {

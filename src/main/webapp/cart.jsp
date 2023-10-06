@@ -25,7 +25,6 @@
 <jsp:include page="navbar.jsp"/>
 
 <div class="container">
-    <form id="add-item-form" action="${pageContext.request.contextPath}/OrderServlet" method="post">
 
     <div class="cart-table">
         <table>
@@ -37,6 +36,7 @@
                 <th>Item Price</th>
                 <th>Item Category</th>
                 <th>Quantity</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -46,6 +46,7 @@
                 ArrayList<CartDetails> cart = (ArrayList<CartDetails>) session.getAttribute("cart");
                 if (cart != null) {
                     for (CartDetails cartDetail : cart) {
+                        int i=0;
                         ItemView item = cartDetail.getItem();
 
             %>
@@ -61,13 +62,22 @@
                     <!-- Quantity control buttons -->
                     <input type="number" name="quantity" value="<%=cartDetail.getNumberOfItems()%>" min="1">
                 </td>
+                <td class="image-cell">
+                    <form action="AddToCartServlet" method="post">
+                        <input type="hidden" name="index" value="<%=i%>">
+                        <input type="hidden" name="command" value="removeFromCart">
+                        <input type="image" src="Style/Pictures/garbage.png" width="20px" height="20px">
+
+                    </form>
+                </td>
             </tr>
 
             <%
-                    }
+                i++;  }
                 }
             %>
             <tr>
+                <form id="add-item-form" action="${pageContext.request.contextPath}/OrderServlet" method="post">
 
 
                 <% if (cart != null) {%>

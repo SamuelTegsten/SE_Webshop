@@ -5,10 +5,12 @@ import java.util.ArrayList;
 public class CartDetails {
     private ItemView item;
     private int numberOfItems;
+    private static int cartDetailID=0;
 
     public CartDetails(ItemView item, int numberOfItems) {
         this.item = item;
         this.numberOfItems = numberOfItems;
+        this.cartDetailID = cartDetailID+1;
     }
 
     public ItemView getItem() {
@@ -35,4 +37,11 @@ public class CartDetails {
         return total;
     }
 
+    @Override
+    public String toString() {
+        return "CartDetails{" +
+                "item=" + item +
+                ", numberOfItems=" + numberOfItems +
+                '}';
+    }
 }

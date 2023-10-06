@@ -26,9 +26,42 @@ public class DbItem extends Item {
         super(name, picture, category, price, stockNumber);
     }
 
+    private static Connection connection = DBConnect.getConnection();
+
+    public static boolean updatePictureDb(String itemName, String newPicture) throws SQLException {
+        String sql = "UPDATE item SET picture = ? WHERE name = ?";
+        connection.setAutoCommit(false);
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, newPicture);
+            pstmt.setString(2, itemName);
+            pstmt.executeUpdate();
+            connection.commit();
+            connection.setAutoCommit(true);
+            return true;
+        } catch (SQLException e) {
+            connection.rollback();
+            throw new SQLException(e);
+        }
+    }
+
+    public static boolean updateCategoryDb(String itemName, String newCategory) throws SQLException {
+        String sql = "UPDATE item SET category = ? WHERE name = ?";
+        connection.setAutoCommit(false);
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, newCategory);
+            pstmt.setString(2, itemName);
+            pstmt.executeUpdate();
+            connection.commit();
+            connection.setAutoCommit(true);
+            return true;
+        } catch (SQLException e) {
+            connection.rollback();
+            throw new SQLException(e);
+        }
+    }
     public static Collection searchItemDB(String searchText){
         ArrayList<DbItem> foundItems = new ArrayList<>();
-        Connection con = DBConnect.getConnection();
+        Connection con = connection;
         String sql = "SELECT * FROM item WHERE name LIKE ?";
         try(PreparedStatement pstm = con.prepareStatement(sql)) {
             pstm.setString(1, "%" + searchText + "%");
@@ -48,17 +81,28 @@ public class DbItem extends Item {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-
-
-
     }
 
+    public static boolean removeItem(String itemName) throws SQLException {
+        String sql = "DELETE FROM item WHERE name = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            connection.setAutoCommit(false);
+            pstmt.setString(1, itemName);
+            pstmt.executeUpdate();
+            connection.setAutoCommit(true);
+            return true;
+        } catch (SQLException e) {
+            connection.rollback();
+            throw new SQLException(e);
+        }
+    }
+
+
     /**
-     * Adds an item to the database with a specified stock number.
-     * @param item        The Item object to be added to the database.
-     * @param stockNumber The stock number of the item.
-     * @throws SQLException If a database error occurs during the operation.
-     */
+         * Adds an item to the database with a specified stock number.
+         * @param item        The Item object to be added to the database.
+         * @throws SQLException If a database error occurs during the operation.
+         */
 
     public static boolean addItemDB(Item item) throws SQLException {
         // SQL statement for inserting a new item with stock number.
@@ -66,9 +110,8 @@ public class DbItem extends Item {
         PreparedStatement pstmt = null;
         try {
             // Prepare the SQL statement and disable auto-commit to start a transaction.
-            DBConnect.getConnection();
-            pstmt = DBConnect.getConnection().prepareStatement(sql);
-            DBConnect.getConnection().setAutoCommit(false);
+            pstmt = connection.prepareStatement(sql);
+            connection.setAutoCommit(false);
             pstmt.setString(1, item.getName());
             pstmt.setString(2, item.getPicture());
             pstmt.setString(3, item.getCategory());
@@ -79,7 +122,9 @@ public class DbItem extends Item {
             pstmt.executeUpdate();
 
             // Commit the transaction to save changes to the database.
-            DBConnect.getConnection().commit();
+            connection.commit();
+            connection.setAutoCommit(true);
+
             return true;
         } catch (SQLException e) {
             // Rollback the transaction and throw an exception if a database error occurs.

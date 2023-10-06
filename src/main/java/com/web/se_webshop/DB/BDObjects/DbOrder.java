@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class DbOrder extends Order{
+
+    private static Connection connection = DBConnect.getConnection();
     protected DbOrder(String username, String itemName, int numberOfItems, String address, OrderStatus orderStatus, java.sql.Date date, String orderId){
         super(username, itemName, numberOfItems, address, orderStatus, date, orderId);
     }
@@ -22,19 +24,17 @@ public class DbOrder extends Order{
         String sql = "UPDATE `order` SET status = 'SENT' WHERE order_id = ?";
         PreparedStatement pstmt = null;
         try {
-            pstmt = DBConnect.getConnection().prepareStatement(sql);
-            DBConnect.getConnection().setAutoCommit(false);
-
+            connection.setAutoCommit(false);
+            pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, orderId);
-
             pstmt.executeUpdate();
 
-
-            DBConnect.getConnection().commit();
+            connection.commit();
+            connection.setAutoCommit(true);
 
         } catch (SQLException e) {
 
-            DBConnect.getConnection().rollback();
+            connection.rollback();
             throw new SQLException(e);
         } finally {
 
@@ -49,9 +49,8 @@ public class DbOrder extends Order{
 
     public static Collection getAllOrders() {
         ArrayList<DbOrder> orders = new ArrayList<>();
-        Connection con = DBConnect.getConnection();
         String sql = "SELECT * FROM `order`";
-        try (PreparedStatement pstm = con.prepareStatement(sql)) {
+        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
             ResultSet pResultSet = pstm.executeQuery();
             while (pResultSet.next()) {
                 orders.add(new DbOrder(
@@ -73,34 +72,53 @@ public class DbOrder extends Order{
     public static boolean addOrderDB(ArrayList<Order> orders) throws SQLException {
 
         String sql = "INSERT INTO `order` (username, item_name, number_of_items, address, status, order_date) VALUES (?, ?, ?, ?, ?, ?)";
-        PreparedStatement pstmt = null;
+        PreparedStatement pstmt1 = null;
+        PreparedStatement pstmt2 = null;
+        PreparedStatement pstmt3 = null;
+        int stockNumber = 0;
+        int newStock;
         try {
-                pstmt = DBConnect.getConnection().prepareStatement(sql);
-                DBConnect.getConnection().setAutoCommit(false);
-            for(int i=0; i<orders.size(); i++) {
+                pstmt1 = connection.prepareStatement(sql);
+                connection.setAutoCommit(false);
 
-                pstmt.setString(1, orders.get(i).getUsername());
-                pstmt.setString(2, orders.get(i).getItemName());
-                pstmt.setInt(3, orders.get(i).getNumberOfItems());
-                pstmt.setString(4, orders.get(i).getAddress());
-                pstmt.setString(5, orders.get(i).getStatus().toString());
-                pstmt.setDate(6, orders.get(i).getDate());
-                pstmt.executeUpdate();
+            for(int i=0; i<orders.size(); i++) {
+                // update new order to sql
+                pstmt1.setString(1, orders.get(i).getUsername());
+                pstmt1.setString(2, orders.get(i).getItemName());
+                pstmt1.setInt(3, orders.get(i).getNumberOfItems());
+                pstmt1.setString(4, orders.get(i).getAddress());
+                pstmt1.setString(5, orders.get(i).getStatus().toString());
+                pstmt1.setDate(6, orders.get(i).getDate());
+                pstmt1.executeUpdate();
+                // get the amount of items in stock
+                sql = "SELECT stockNumber FROM item WHERE name = ?";
+                pstmt2 = connection.prepareStatement(sql);
+                pstmt2.setString(1, orders.get(i).getItemName());
+                ResultSet pResultSet = pstmt2.executeQuery();
+                if(pResultSet.next()) {
+                    stockNumber = pResultSet.getInt("stockNumber");
+                }
+                    newStock = stockNumber - orders.get(i).getNumberOfItems();
+                // update stock in database
+                sql = "UPDATE item SET stockNumber = ? WHERE name = ?";
+                pstmt3 = connection.prepareStatement(sql);
+                pstmt3.setInt(1, newStock);
+                pstmt3.setString(2, orders.get(i).getItemName());
+                pstmt3.executeUpdate();
             }
 
-
-            DBConnect.getConnection().commit();
+            connection.commit();
             return true;
 
         } catch (SQLException e) {
-
-            DBConnect.getConnection().rollback();
+            connection.rollback();
             throw new SQLException(e);
         } finally {
+            if (pstmt1 != null) pstmt1.close();
+            if (pstmt2 != null) pstmt2.close();
+            if (pstmt3 != null) pstmt3.close();
 
-            if (pstmt != null) {
-                pstmt.close();
-            }
+            connection.setAutoCommit(true);
         }
     }
 }

@@ -140,3 +140,8 @@
     outline: none;
     overflow: hidden;
 }
+
+td.image-cell {
+    text-align: center;
+    vertical-align: middle;
+}

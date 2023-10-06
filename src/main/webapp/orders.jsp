@@ -46,8 +46,6 @@
                 for (OrderView order : orders) {
         %>
 
-
-
         <tr>
             <td><%=order.getItemName()%></td>
             <td><%=order.getNumberOfItems()%></td>
@@ -83,19 +81,30 @@
         </form>
     </div>
     <div class="add_item">
+
+        <!-- Remove Item -->
         <h2>Remove Item</h2>
         <div class="item_details">
-            <input type="text" placeholder="Item Name" id="item-name_remove">
-            <button class="remove_item_button">Remove Item</button>
+            <form id="remove-item" action="${pageContext.request.contextPath}/item-servlet" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="command" value="REMOVE">
+                <input type="text" name="item-name" placeholder="Item Name" id="item-name_remove">
+                <button type="submit" class="remove_item_button">Remove Item</button>
+            </form>
+            <p>${requestScope.successRemoveMessage}</p>
         </div>
     </div>
+
+    <!-- Update Item -->
     <div class="add_item">
         <h2>Update Item</h2>
         <div class="item_details">
-            <input type="text" placeholder="Item Name" id="item_name_update">
-            <input type="file" accept="image/*" id="new_image">
-            <input type="text" placeholder="New Category" id="new_category">
-            <button class="add_item_button">Add Item</button>
+            <form id="update-item" action="${pageContext.request.contextPath}/item-servlet" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="command" value="UPDATE">
+                <input type="text" name="item-name" placeholder="Item Name: Write the name of the item you want to update" id="item_name_update">
+                <input type="file" name="item-image" accept="image/*" id="new_image">
+                <input type="text" name="new-category" placeholder="New Category" id="new_category">
+                <button class="add_item_button">Update Selected Item</button>
+            </form>
         </div>
     </div>
 </div>

@@ -36,8 +36,17 @@ public class ItemHandler {
         }
         return null;
     }
-    public static void removeItem(Item item) {
-        itemList.remove(item);
+    public static boolean removeItem(String itemName) throws SQLException {
+        return Item.removeItem(itemName);
+    }
+
+    public static boolean updatePicture(String itemName, String newPicture) throws SQLException {
+        return Item.updatePicture(itemName, newPicture);
+    }
+
+    public static boolean updateCategory(String itemName, String newCategory) throws SQLException {
+        return Item.updateCategory(itemName, newCategory);
+
     }
 }
 

@@ -8,6 +8,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "AddToCartServlet", value = "/AddToCartServlet")
@@ -15,6 +16,34 @@ public class AddToCartServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String command = request.getParameter("command");
+
+        switch (command) {
+            case "addToCart":
+                addToCart(request, response);
+                break;
+            case "removeFromCart":
+                removeFromCart(request,response);
+                break;
+
+        }
+    }
+
+    private void removeFromCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("hola");
+        int index = Integer.parseInt(request.getParameter("index"));
+        System.out.println(index);
+        HttpSession session = request.getSession();
+        ArrayList<CartDetails> cart = (ArrayList<CartDetails>) session.getAttribute("cart");
+        System.out.println(cart);
+        cart.remove(index);
+        System.out.println(cart);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
+        dispatcher.forward(request, response);
+
+    }
+
+    private void addToCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // retrieve details from item an quantity
         String itemName = request.getParameter("item_name");
         int quantity = Integer.parseInt(request.getParameter("quantity"));

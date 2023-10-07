@@ -3,31 +3,58 @@
 ## Description
 Welcome to the Samuel & Esteban WebShop project! This web application is designed to provide a seamless shopping experience for users. Below, you'll find an overview of the different sections of the web view.
 
+---
+
 ## Business Objects, Database, and Controllers
-![UML Visual for our BO and DB files in our Java project](repoImage/java.png)
+
+### UML Visual for our BO and DB files in our Java project
+![Business Objects and Database](repoImage/java.png)
+
+---
 
 ## View
 
 ### Index.jsp
 ![Index.jsp](repoImage/index_jsp.png)
+Description: The index page of our web application.
+
+---
 
 ### Product.jsp
 ![Product.jsp](repoImage/product_jsp.png)
+Description: The product page displaying items for sale.
+
+---
 
 ### Account.jsp
 ![Account.jsp](repoImage/account_jsp.png)
+Description: User account management page.
+
+---
 
 ### Success.jsp
 ![Success.jsp](repoImage/success_jsp.png)
+Description: Confirmation page for successful transactions.
+
+---
 
 ### Orders.jsp
 ![Orders.jsp](repoImage/orders_jsp.png)
+Description: View and manage user orders.
+
+---
 
 ### Admin.jsp
 ![Admin.jsp](repoImage/admin_jsp.png)
+Description: Admin panel for site management.
+
+---
 
 ### Cart.jsp
 ![Cart.jsp](repoImage/cart_jsp.png)
+Description: Shopping cart for users.
+
+---
 
 ## Database Structure
 ```sql

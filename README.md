@@ -1,62 +1,86 @@
 # Samuel & Esteban WebShop
 
-## Description
-Welcome to the Samuel & Esteban WebShop project! This web application is designed to provide a seamless shopping experience for users. Below, you'll find an overview of the different sections of the web view.
+# Description
+<p align="center">
+  Welcome to the Samuel & Esteban WebShop project! This web application is designed to provide a seamless shopping experience for users. Below, you'll find an overview of the different sections of the web view.
+</p>
 
 ---
 
-## Business Objects, Database, and Controllers
+# Business Objects, Database, and Controllers
 
-### UML Visual for our BO and DB files in our Java project
-![Business Objects and Database](repoImage/java.png)
-
----
-
-## View
-
-### Index.jsp
-![Index.jsp](repoImage/index_jsp.png)
-Description: The index page of our web application.
+<p align="center">
+  <img src="repoImage/java.png" alt="Business Objects and Database">
+</p>
 
 ---
 
-### Product.jsp
-![Product.jsp](repoImage/product_jsp.png)
-Description: The product page displaying items for sale.
+# View
+
+## Index.jsp
+<p align="center">
+  <img src="repoImage/index_jsp.png" alt="Index.jsp">
+  <br>
+  Description: The index page of our web application.
+</p>
 
 ---
 
-### Account.jsp
-![Account.jsp](repoImage/account_jsp.png)
-Description: User account management page.
+## Product.jsp
+<p align="center">
+  <img src="repoImage/product_jsp.png" alt="Product.jsp">
+  <br>
+  Description: The product page displaying items for sale.
+</p>
 
 ---
 
-### Success.jsp
-![Success.jsp](repoImage/success_jsp.png)
-Description: Confirmation page for successful transactions.
+## Account.jsp
+<p align="center">
+  <img src="repoImage/account_jsp.png" alt="Account.jsp">
+  <br>
+  Description: User account management page.
+</p>
 
 ---
 
-### Orders.jsp
-![Orders.jsp](repoImage/orders_jsp.png)
-Description: View and manage user orders.
+## Success.jsp
+<p align="center">
+  <img src="repoImage/success_jsp.png" alt="Success.jsp">
+  <br>
+  Description: Confirmation page for successful transactions.
+</p>
 
 ---
 
-### Admin.jsp
-![Admin.jsp](repoImage/admin_jsp.png)
-Description: Admin panel for site management.
+## Orders.jsp
+<p align="center">
+  <img src="repoImage/orders_jsp.png" alt="Orders.jsp">
+  <br>
+  Description: View and manage user orders.
+</p>
 
 ---
 
-### Cart.jsp
-![Cart.jsp](repoImage/cart_jsp.png)
-Description: Shopping cart for users.
+## Admin.jsp
+<p align="center">
+  <img src="repoImage/admin_jsp.png" alt="Admin.jsp">
+  <br>
+  Description: Admin panel for site management.
+</p>
 
 ---
 
-## Database Structure
+## Cart.jsp
+<p align="center">
+  <img src="repoImage/cart_jsp.png" alt="Cart.jsp">
+  <br>
+  Description: Shopping cart for users.
+</p>
+
+---
+
+# Database Structure
 ```sql
 CREATE DATABASE sql_webshop;
 USE sql_webshop;

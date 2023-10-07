@@ -3,7 +3,11 @@
 ## Description
 Welcome to the Samuel & Esteban WebShop project! This web application is designed to provide a seamless shopping experience for users. Below, you'll find an overview of the different sections of the web view.
 
-![Alt text](repoImage/java.png)
+## BO + DB + Controller
+![UML Visual for our BO and DB files in out java project](repoImage/java.png)
+
+## View
+
 
 ### Database Structure
 ```sql

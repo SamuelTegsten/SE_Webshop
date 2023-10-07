@@ -3,33 +3,33 @@
 ## Description
 Welcome to the Samuel & Esteban WebShop project! This web application is designed to provide a seamless shopping experience for users. Below, you'll find an overview of the different sections of the web view.
 
-## BO + DB + Controller
-![UML Visual for our BO and DB files in out java project](repoImage/java.png)
+## Business Objects, Database, and Controllers
+![UML Visual for our BO and DB files in our Java project](repoImage/java.png)
 
 ## View
 
 ### Index.jsp
-![Index.jsp image](repoImage/index_jsp.png)
+![Index.jsp](repoImage/index_jsp.png)
 
 ### Product.jsp
-![Product.jsp image](repoImage/product_jsp.png)
+![Product.jsp](repoImage/product_jsp.png)
 
 ### Account.jsp
-![Account.jsp image](repoImage/account_jsp.png)
+![Account.jsp](repoImage/account_jsp.png)
 
 ### Success.jsp
-![Success.jsp image](repoImage/success_jsp.png)
+![Success.jsp](repoImage/success_jsp.png)
 
 ### Orders.jsp
-![Orders.jsp image](repoImage/orders_jsp.png)
+![Orders.jsp](repoImage/orders_jsp.png)
 
 ### Admin.jsp
-![Admin.jsp image](repoImage/admin_jsp.png)
+![Admin.jsp](repoImage/admin_jsp.png)
 
 ### Cart.jsp
-![Cart.jsp image](repoImage/cart_jsp.png)
+![Cart.jsp](repoImage/cart_jsp.png)
 
-### Database Structure
+## Database Structure
 ```sql
 CREATE DATABASE sql_webshop;
 USE sql_webshop;
@@ -50,7 +50,7 @@ CREATE TABLE user (
     UNIQUE (password)
 );
 
-CREATE TABLE `order`(
+CREATE TABLE `order` (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     item_name VARCHAR(255) NOT NULL,

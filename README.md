@@ -48,7 +48,7 @@
 <p align="center">
   <img src="repoImage/success_jsp.png" alt="Success.jsp">
   <br>
-  Description: Confirmation page for successful transactions.
+  Description: Confirmation page for successful login.
 </p>
 
 ---

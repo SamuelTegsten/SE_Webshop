@@ -42,8 +42,8 @@
                 <%
                     ArrayList<CartDetails> cart = (ArrayList<CartDetails>) session.getAttribute("cart");
                     if (cart != null) {
+                        int i=0;
                         for (CartDetails cartDetail : cart) {
-                            int i=0;
                             ItemView item = cartDetail.getItem();
                 %>
                 <tr>
@@ -69,7 +69,8 @@
                 </tr>
 
                 <%
-                        i++;  }
+                            i++;
+                        }
                     }
                 %>
                 <tr>

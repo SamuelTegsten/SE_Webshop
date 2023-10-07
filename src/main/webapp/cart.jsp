@@ -101,7 +101,7 @@
             %>
             <div>
                 <input type="hidden" name="command" value="loginRedirect">
-                <button class="login-button">Log In</button>
+                <a href="account.jsp" class="login-button">Log In</a>
             </div>
             <% } else { %>
             <div>

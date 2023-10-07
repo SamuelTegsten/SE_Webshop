@@ -68,6 +68,7 @@ public class OrderServlet extends HttpServlet {
             String userName = (String) request.getSession().getAttribute("userName");
             String  address = request.getParameter("address");
             OrderHandler.addOrder(userName, cart, address);
+            cart.clear();
         }
     }
 

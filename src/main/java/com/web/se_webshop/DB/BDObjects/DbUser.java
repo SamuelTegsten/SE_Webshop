@@ -4,6 +4,7 @@ import com.web.se_webshop.BO.Model.AccountLogic.Permission;
 import com.web.se_webshop.BO.Model.AccountLogic.User;
 import com.web.se_webshop.DB.DBManager.DBConnect;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,6 +28,8 @@ public class DbUser extends User {
         super(username, password, permission);
     }
 
+    private static Connection connection = DBConnect.getConnection();
+
     /**
      * Adds a user to the database, checking for existing username or password before insertion.
      * @param user The User object to be added to the database.
@@ -44,7 +47,7 @@ public class DbUser extends User {
 
         try {
             // Check if the username or password already exists in the database.
-            pstmtCheck = DBConnect.getConnection().prepareStatement(sqlCheckExistence);
+            pstmtCheck = connection.prepareStatement(sqlCheckExistence);
             pstmtCheck.setString(1, user.getUsername());
             pstmtCheck.setString(2, user.getPassword());
             ResultSet resultSet = pstmtCheck.executeQuery();
@@ -54,19 +57,20 @@ public class DbUser extends User {
             }
 
             // Insert the new user into the database.
-            pstmtInsert = DBConnect.getConnection().prepareStatement(sqlInsertUser);
-            DBConnect.getConnection().setAutoCommit(false);
+            pstmtInsert = connection.prepareStatement(sqlInsertUser);
+            connection.setAutoCommit(false);
             pstmtInsert.setString(1, user.getUsername());
             pstmtInsert.setString(2, user.getPassword());
             pstmtInsert.setString(3, user.getPermission().toString());
 
             pstmtInsert.executeUpdate();
 
-            DBConnect.getConnection().commit();
+            connection.commit();
+            connection.setAutoCommit(true);
 
         } catch (SQLException e) {
             // Rollback transaction and throw an exception if a database error occurs.
-            DBConnect.getConnection().rollback();
+            connection.rollback();
             throw new SQLException(e);
         } finally {
             // Close prepared statements to release resources.
@@ -93,7 +97,7 @@ public class DbUser extends User {
         ResultSet resultSet = null;
 
         try {
-            pstmt = DBConnect.getConnection().prepareStatement(sqlFindUser);
+            pstmt = connection.prepareStatement(sqlFindUser);
             pstmt.setString(1, username);
             pstmt.setString(2, password);
             resultSet = pstmt.executeQuery();
@@ -133,8 +137,8 @@ public class DbUser extends User {
 
         try {
             // Check the user's permission first
-            pstmtCheck = DBConnect.getConnection().prepareStatement(sqlCheckPermission);
-            DBConnect.getConnection().setAutoCommit(false);
+            pstmtCheck = connection.prepareStatement(sqlCheckPermission);
+            connection.setAutoCommit(false);
             pstmtCheck.setString(1, username);
             ResultSet resultSet = pstmtCheck.executeQuery();
 
@@ -148,13 +152,14 @@ public class DbUser extends User {
                 }
 
                 // User has permission other than ADMIN, proceed with removal
-                pstmtRemove = DBConnect.getConnection().prepareStatement(sqlRemoveUser);
+                pstmtRemove = connection.prepareStatement(sqlRemoveUser);
                 pstmtRemove.setString(1, username);
                 int rowsAffected = pstmtRemove.executeUpdate();
 
                 if (rowsAffected > 0) {
                     // User successfully removed from the database.
-                    DBConnect.getConnection().commit();
+                    connection.commit();
+                    connection.setAutoCommit(true);
                     return true;
                 } else {
                     // User not found.
@@ -166,7 +171,7 @@ public class DbUser extends User {
             }
         } catch (SQLException e) {
             // Rollback transaction and throw an exception if a database error occurs.
-            DBConnect.getConnection().rollback();
+            connection.rollback();
             throw new SQLException(e);
         } finally {
             // Close prepared statements to release resources.
@@ -192,15 +197,16 @@ public class DbUser extends User {
         PreparedStatement pstmt = null;
 
         try {
-            pstmt = DBConnect.getConnection().prepareStatement(sqlRemoveAdmin);
-            DBConnect.getConnection().setAutoCommit(false);
+            pstmt = connection.prepareStatement(sqlRemoveAdmin);
+            connection.setAutoCommit(false);
             pstmt.setString(1, username);
             pstmt.setString(2, password);
             int rowsAffected = pstmt.executeUpdate();
 
             if (rowsAffected > 0) {
                 // Admin successfully removed from the database.
-                DBConnect.getConnection().commit();
+                connection.commit();
+                connection.setAutoCommit(true);
                 return true;
             } else {
                 // Admin not found.
@@ -208,7 +214,7 @@ public class DbUser extends User {
             }
         } catch (SQLException e) {
             // Rollback transaction and throw an exception if a database error occurs.
-            DBConnect.getConnection().rollback();
+            connection.rollback();
             throw new SQLException(e);
         } finally {
             // Close prepared statement to release resources.
@@ -231,7 +237,7 @@ public class DbUser extends User {
         ResultSet resultSet = null;
 
         try {
-            pstmt = DBConnect.getConnection().prepareStatement(sqlFindAllUsers);
+            pstmt = connection.prepareStatement(sqlFindAllUsers);
             resultSet = pstmt.executeQuery();
 
             while (resultSet.next()) {

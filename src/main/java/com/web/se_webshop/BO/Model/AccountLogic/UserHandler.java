@@ -1,5 +1,8 @@
 package com.web.se_webshop.BO.Model.AccountLogic;
 
+import com.web.se_webshop.View.Controller.AccountServlet;
+import com.web.se_webshop.View.Controller.AdminServlet;
+import com.web.se_webshop.View.Controller.UserTableServlet;
 import com.web.se_webshop.View.ObjectView.UserView;
 
 import java.sql.SQLException;
@@ -12,7 +15,7 @@ import static com.web.se_webshop.BO.Model.AccountLogic.User.*;
 /**
  * Handles operations related to user management and permissions.
  */
-public class UserHandler {
+public class UserHandler extends AccountServlet {
     
     /**
      * Adds a new user with the specified username, password, and permission.

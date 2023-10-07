@@ -1,13 +1,13 @@
 <h1 align="center">Samuel & Esteban WebShop</h1>
 
-<h2 align="center">Description</h2>
+<h1 align="center">Description</h1>
 <p align="center">
   Welcome to the Samuel & Esteban WebShop project! This web application is designed to provide a seamless shopping experience for users. Below, you'll find an overview of the different sections of the web view.
 </p>
 
 ---
 
-<h2 align="center">Business Objects, Database, and Controllers</h2>
+<h1 align="center">Business Objects, Database, and Controllers</h1>
 
 <p align="center">
   <img src="repoImage/java.png" alt="Business Objects and Database">
@@ -15,51 +15,63 @@
 
 ---
 
-<h2 align="center">View</h2>
+<h1 align="center">View</h1>
 
-<h3 align="center">Index.jsp</h3>
+<h2 align="center">Index.jsp</h2>
 <p align="center">
   <img src="repoImage/index_jsp.png" alt="Index.jsp">
   <br>
   Description: The index page of our web application.
 </p>
 
-<h3 align="center">Product.jsp</h3>
+---
+
+<h2 align="center">Product.jsp</h2>
 <p align="center">
   <img src="repoImage/product_jsp.png" alt="Product.jsp">
   <br>
   Description: The product page displaying items for sale.
 </p>
 
-<h3 align="center">Account.jsp</h3>
+---
+
+<h2 align="center">Account.jsp</h2>
 <p align="center">
   <img src="repoImage/account_jsp.png" alt="Account.jsp">
   <br>
   Description: User account management page.
 </p>
 
-<h3 align="center">Success.jsp</h3>
+---
+
+<h2 align="center">Success.jsp</h2>
 <p align="center">
   <img src="repoImage/success_jsp.png" alt="Success.jsp">
   <br>
   Description: Confirmation page for successful transactions.
 </p>
 
-<h3 align="center">Orders.jsp</h3>
+---
+
+<h2 align="center">Orders.jsp</h2>
 <p align="center">
   <img src="repoImage/orders_jsp.png" alt="Orders.jsp">
   <br>
   Description: View and manage user orders.
 </p>
 
-<h3 align="center">Admin.jsp</h3>
+---
+
+<h2 align="center">Admin.jsp</h2>
 <p align="center">
   <img src="repoImage/admin_jsp.png" alt="Admin.jsp">
   <br>
   Description: Admin panel for site management.
 </p>
 
-<h3 align="center">Cart.jsp</h3>
+---
+
+<h2 align="center">Cart.jsp</h2>
 <p align="center">
   <img src="repoImage/cart_jsp.png" alt="Cart.jsp">
   <br>
@@ -68,7 +80,7 @@
 
 ---
 
-<h2 align="center">Database Structure</h2>
+# Database Structure
 ```sql
 CREATE DATABASE sql_webshop;
 USE sql_webshop;

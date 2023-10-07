@@ -7,7 +7,26 @@ Welcome to the Samuel & Esteban WebShop project! This web application is designe
 ![UML Visual for our BO and DB files in out java project](repoImage/java.png)
 
 ## View
+### Index.jsp
+![Index.jsp image](repoImage/index_jsp.png)
 
+### Product.jsp
+!Product.jsp image](repoImage/product_jsp.png)
+
+### Account.jsp
+!Account.jsp image](repoImage/account_jsp.png)
+
+### Success.jsp
+!Success.jsp image](repoImage/success_jsp.png)
+
+### Orders.jsp
+!Orders.jsp image](repoImage/orders_jsp.png)
+
+### Admin.jsp
+!Admin.jsp image](repoImage/admin_jsp.png)
+
+### Cart.jsp
+!Cart.jsp image](repoImage/cart_jsp.png)
 
 ### Database Structure
 ```sql

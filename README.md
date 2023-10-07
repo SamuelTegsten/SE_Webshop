@@ -28,7 +28,7 @@
 
 <h2 align="center">Product.jsp</h2>
 <p align="center">
-  <img src="repoImage/product_jsp.png" alt="Product.jsp">
+  <img src="repoImage/products_jsp.png" alt="Product.jsp">
   <br>
   Description: The product page displaying items for sale.
 </p>

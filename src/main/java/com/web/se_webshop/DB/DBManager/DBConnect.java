@@ -1,5 +1,9 @@
 package com.web.se_webshop.DB.DBManager;
 
+import com.web.se_webshop.DB.BDObjects.DbItem;
+import com.web.se_webshop.DB.BDObjects.DbOrder;
+import com.web.se_webshop.DB.BDObjects.DbUser;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

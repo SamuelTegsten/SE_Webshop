@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "UserTableServlet", value = "/user-table-servlet")
-public class UserTableServlet extends HttpServlet {
+public class UserTableServlet extends UserHandler {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {

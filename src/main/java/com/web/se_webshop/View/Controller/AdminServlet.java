@@ -21,18 +21,22 @@ import static com.web.se_webshop.BO.Model.AccountLogic.UserHandler.*;
  * Servlet for handling admin-related actions such as adding and removing users, staff members, and admins.
  */
 @WebServlet(name = "AdminServlet", value = "/admin-servlet")
-public class AdminServlet extends HttpServlet {
+public class AdminServlet extends UserHandler {
 
     /**
      * Handle HTTP POST requests.
      *
      * @param request  The HttpServletRequest object representing the HTTP request.
      * @param response The HttpServletResponse object representing the HTTP response.
-     * @throws IOException      If there is an I/O error.
-     * @throws ServletException If there is a servlet-related error.
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        editUsers(request,response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            editUsers(request,response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
